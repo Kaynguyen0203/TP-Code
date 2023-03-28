@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TP Code:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TP_Code_jar</output-path>
+    <root id="archive" name="TP Code.jar">
+      <element id="module-output" name="TP Code" />
+    </root>
+  </artifact>
+</component>
