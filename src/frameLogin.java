@@ -1,10 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public class frameLogin {
     private Main main;
@@ -35,34 +32,28 @@ public class frameLogin {
         });
     }
     private void login(){
+        boolean valid = false;
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2018g30",
                     "in2018g30_a", "AqZonm86");
-            String query = "select name, password, email, address, role from users";
-            Statement statement = con.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
+            String sql = "SELECT password, email, role FROM users WHERE email = ? AND password = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1, fieldEmail.getText());
+            statement.setString(2, String.valueOf(fieldPassword.getPassword()));
+            ResultSet resultSet = statement.executeQuery();
             while(resultSet.next()){
                 String password = resultSet.getString("password");
                 String email = resultSet.getString("email");
                 String role = resultSet.getString("role");
                 if (email.equals(fieldEmail.getText()) && password.equals(String.valueOf(fieldPassword.getPassword()))){
+                    valid = true;
                     switch (role) {
-                        case "Customer":
-                            new frameCustomer(main);
-                            break;
-                        case "Office Manager":
-                            new frameOfficeManager(main);
-                            break;
-                        case "Travel Advisor":
-                            new frameTravelAdvisor(main);
-                            break;
-                        case "System Admin":
-                            new frameSystemAdmin(main);
-                            break;
-                        case "AirVia Staff":
-                            new frameAirVia(main);
-                            break;
+                        case "Customer" -> new frameCustomer(main);
+                        case "Office Manager" -> new frameOfficeManager(main);
+                        case "Travel Advisor" -> new frameTravelAdvisor(main);
+                        case "System Admin" -> new frameSystemAdmin(main);
+                        case "AirVia Staff" -> new frameAirVia(main);
                     }
                 }
             }
@@ -70,6 +61,9 @@ public class frameLogin {
             con.close();
         }catch(Exception e){
             e.printStackTrace();
+        }
+        if (!valid){
+            JOptionPane.showMessageDialog(frame, "Invalid", "Try again", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
