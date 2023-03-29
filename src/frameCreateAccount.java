@@ -7,8 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 public class frameCreateAccount {
-    private Main main;
-    private JFrame frame;
+    private final Main main;
+    private final JFrame frame;
     private JTextField fieldName;
     private JTextField fieldPassword;
     private JButton buttonEnter;

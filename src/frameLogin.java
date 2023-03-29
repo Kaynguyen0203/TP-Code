@@ -11,6 +11,7 @@ public class frameLogin {
     private JButton buttonEnter;
     private JButton buttonCreateAccount;
     private JPanel panelLogin;
+    private JButton buttonExit;
 
     public frameLogin(Main main){
         this.main = main;
@@ -28,6 +29,12 @@ public class frameLogin {
             @Override
             public void actionPerformed(ActionEvent e) {
                 login();
+            }
+        });
+        buttonExit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
             }
         });
     }

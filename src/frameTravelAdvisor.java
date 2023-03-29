@@ -37,7 +37,7 @@ public class frameTravelAdvisor {
         buttonLogOut.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                new frameLogin(main);
             }
         });
     }
