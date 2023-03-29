@@ -3,6 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/TP_Code_jar</output-path>
     <root id="archive" name="TP Code.jar">
       <element id="module-output" name="TP Code" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/mysql-connector-j-8.0.32.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
