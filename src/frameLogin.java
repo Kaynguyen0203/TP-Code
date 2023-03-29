@@ -21,8 +21,7 @@ public class frameLogin {
         buttonCreateAccount.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frameCreateAccount form = new frameCreateAccount(main);
-                User user =  form.user;
+                new frameCreateAccount(main);
             }
         });
         buttonEnter.addActionListener(new ActionListener() {
@@ -44,7 +43,7 @@ public class frameLogin {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2018g30",
                     "in2018g30_a", "AqZonm86");
-            String sql = "SELECT password, email, role FROM users WHERE email = ? AND password = ?";
+            String sql = "SELECT name, password, email, address, role FROM users WHERE email = ? AND password = ?";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, fieldEmail.getText());
             statement.setString(2, String.valueOf(fieldPassword.getPassword()));
@@ -52,8 +51,12 @@ public class frameLogin {
             while(resultSet.next()){
                 String password = resultSet.getString("password");
                 String email = resultSet.getString("email");
-                String role = resultSet.getString("role");
                 if (email.equals(fieldEmail.getText()) && password.equals(String.valueOf(fieldPassword.getPassword()))){
+                    String address = resultSet.getString("address");
+                    String name = resultSet.getString("name");
+                    String role = resultSet.getString("role");
+                    User user = new User(name, password, email, address, role);
+                    main.setUser(user);
                     valid = true;
                     switch (role) {
                         case "Customer" -> new frameCustomer(main);

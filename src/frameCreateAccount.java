@@ -17,7 +17,7 @@ public class frameCreateAccount {
     private JTextField fieldEmail;
     private JTextField fieldAddress;
     private JButton buttonGoBack;
-    public User user;
+    private User user;
     public frameCreateAccount(Main main){
         this.main = main;
         frame = main.getMain().getMainFrame();
@@ -73,12 +73,7 @@ public class frameCreateAccount {
 
             int addedRows = preparedStatement.executeUpdate();
             if (addedRows > 0){
-                user = new User();
-                user.name = name;
-                user.password = password;
-                user.email = email;
-                user.address = address;
-                user.role = role;
+                user = new User(name, password, email, address, role);
             }
             statement.close();
             con.close();

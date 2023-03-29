@@ -3,6 +3,7 @@ import javax.swing.*;
 public class Main {
     private Main main;
     private JFrame mainFrame;
+    private User user;
     public static void main(String[] args) {new Main();}
 
     public Main(){
@@ -16,4 +17,6 @@ public class Main {
 
     public Main getMain(){return main;}
     public JFrame getMainFrame(){return mainFrame;}
+    public User getUser() {return user;}
+    public void setUser(User newUser) {this.user = newUser;}
 }
