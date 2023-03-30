@@ -62,9 +62,8 @@ public class frameCreateAccount {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2018g30",
                     "in2018g30_a", "AqZonm86");
-            Statement statement = con.createStatement();
-            String sql = "INSERT INTO users (name, password, email, address, role) " + "VALUES (?,?,?,?,?)";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            PreparedStatement preparedStatement = con.prepareStatement(
+                    "INSERT INTO users (name, password, email, address, role) " + "VALUES (?,?,?,?,?)");
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, password);
             preparedStatement.setString(3, email);
@@ -75,7 +74,7 @@ public class frameCreateAccount {
             if (addedRows > 0){
                 user = new User(name, password, email, address, role);
             }
-            statement.close();
+            preparedStatement.close();
             con.close();
         }catch(Exception e){
             e.printStackTrace();
