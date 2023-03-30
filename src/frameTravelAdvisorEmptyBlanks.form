@@ -22,7 +22,7 @@
           <font name="Arial" size="48" style="1"/>
           <foreground color="-16777216"/>
           <horizontalAlignment value="0"/>
-          <text value="Avaliable Blanks"/>
+          <text value="Avaliable Blank"/>
         </properties>
       </component>
       <grid id="d188c" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">

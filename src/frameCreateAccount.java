@@ -41,7 +41,7 @@ public class frameCreateAccount {
         String name = fieldName.getText();
         String password = fieldPassword.getText();
         String email = fieldEmail.getText();
-        String address = fieldName.getText();
+        String address = fieldAddress.getText();
         String role = (String) fieldComboBox.getSelectedItem();
 
         if (name.isEmpty() || password.isEmpty() || email.isEmpty() || address.isEmpty() || role.isEmpty()){
@@ -63,7 +63,7 @@ public class frameCreateAccount {
             Connection con = DriverManager.getConnection("jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2018g30",
                     "in2018g30_a", "AqZonm86");
             PreparedStatement preparedStatement = con.prepareStatement(
-                    "INSERT INTO users (name, password, email, address, role) " + "VALUES (?,?,?,?,?)");
+                    "INSERT INTO users (name, password, email, address, role VALUES (?,?,?,?,?)");
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, password);
             preparedStatement.setString(3, email);
