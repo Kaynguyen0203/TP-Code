@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 public class Blank {
     private final int blankNumber;
     private final int dateIssued;
@@ -10,6 +12,7 @@ public class Blank {
     private final String sellerName;
     private final String customerName;
     private final int dateSold;
+    private final JButton button;
     public Blank(int blankNumber, int dateIssued, int dateValidated, int ticketType, String destination, int flightDate, int seatNumber, int ticketPrice, String sellerName, String customerName, int dateSold) {
         this.blankNumber = blankNumber;
         this.dateIssued = dateIssued;
@@ -22,6 +25,7 @@ public class Blank {
         this.sellerName = sellerName;
         this.customerName = customerName;
         this.dateSold = dateSold;
+        this.button = new JButton();
     }
     public int getBlankNumber() {return blankNumber;}
     public int getDateIssued() {return dateIssued;}
@@ -34,4 +38,5 @@ public class Blank {
     public String getSellerName() {return sellerName;}
     public String getCustomerName() {return customerName;}
     public int getDateSold() {return dateSold;}
+    public JButton getButton() {return button;}
 }

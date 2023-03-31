@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
@@ -31,29 +32,27 @@ public class frameOfficeManagerSystemStock {
                 new frameOfficeManager(main);
             }
         });
-        buttonAllocate.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new frameOfficeManagerAllocateBlank(main);
-            }
-        });
+        //buttonAllocate.addActionListener(new ActionListener() {
+        //    @Override
+        //    public void actionPerformed(ActionEvent e) {
+        //        new frameOfficeManagerAllocateBlank(main);
+        //    }
+        //});
     }
     private void setUpButtons(){
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2018g30",
-                    "in2018g30_a", "AqZonm86");
-            PreparedStatement preparedStatement = con.prepareStatement("" +
-                    "SELECT blankNumber, dateIssued, dateValidated, ticketType, destination, " +
-                    "destination, flightDate, seatNumber, ticketPrice, sellerName, customerName, dateSold FROM blanks");
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
+        ArrayList<Blank> blankArrayList = main.getBlankArrayList();
+        GridBagConstraints buttonConstraints = new GridBagConstraints();
+        buttonConstraints.anchor = GridBagConstraints.NORTHEAST;
+        buttonConstraints.gridx = 1;
+        buttonConstraints.weightx = 1.0;
+        buttonConstraints.weighty = 1.0;
+        for (int i=0; i<blankArrayList.size(); i++){
+            buttonConstraints.gridy = i;
+            Blank blank = blankArrayList.get(i);
+            JButton blankButton = blank.getButton();
+            blankButton.setText("Allocate");
+            panelSecondary.add(blankButton, buttonConstraints);
 
-            }
-            preparedStatement.close();
-            con.close();
-        }catch(Exception e){
-            e.printStackTrace();
         }
     }
 }
