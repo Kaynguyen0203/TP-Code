@@ -54,8 +54,8 @@
         <properties>
           <background color="-1"/>
           <foreground color="-16777216"/>
-          <horizontalScrollBarPolicy value="32"/>
-          <verticalScrollBarPolicy value="22"/>
+          <horizontalScrollBarPolicy value="30"/>
+          <verticalScrollBarPolicy value="20"/>
         </properties>
         <border type="line"/>
         <children>
@@ -65,8 +65,8 @@
               <background color="-1"/>
               <foreground color="-16777216"/>
             </properties>
-            <border type="none">
-              <color color="-4473925"/>
+            <border type="line">
+              <color color="-16777216"/>
             </border>
             <children/>
           </grid>

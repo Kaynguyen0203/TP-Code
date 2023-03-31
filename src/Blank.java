@@ -13,7 +13,6 @@ public class Blank {
     private final String customerName;
     private final int dateSold;
     private final JButton button;
-    private final JLabel label;
     public Blank(int blankNumber, int dateIssued, int dateValidated, int ticketType, String destination, int flightDate, int seatNumber, int ticketPrice, String sellerName, String customerName, int dateSold) {
         this.blankNumber = blankNumber;
         this.dateIssued = dateIssued;
@@ -27,7 +26,6 @@ public class Blank {
         this.customerName = customerName;
         this.dateSold = dateSold;
         this.button = new JButton();
-        this.label = new JLabel();
     }
     public int getBlankNumber() {return blankNumber;}
     public int getDateIssued() {return dateIssued;}
@@ -41,5 +39,4 @@ public class Blank {
     public String getCustomerName() {return customerName;}
     public int getDateSold() {return dateSold;}
     public JButton getButton() {return button;}
-    public JLabel getLabel() {return label;}
 }

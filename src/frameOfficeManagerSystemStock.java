@@ -9,7 +9,6 @@ public class frameOfficeManagerSystemStock {
     private Main main;
     private JFrame frame;
     private JPanel panelOfficeManagerSystemStock;
-    private JButton buttonAllocate;
     private JButton buttonReallocateBlanks;
     private JButton buttonGoBack;
     private JPanel panelSecondary;
@@ -32,12 +31,7 @@ public class frameOfficeManagerSystemStock {
                 new frameOfficeManager(main);
             }
         });
-        //buttonAllocate.addActionListener(new ActionListener() {
-        //    @Override
-        //    public void actionPerformed(ActionEvent e) {
-        //        new frameOfficeManagerAllocateBlank(main);
-        //    }
-        //});
+
     }
     private void setUpButtons(){
         setUpTopLabels();
@@ -54,13 +48,24 @@ public class frameOfficeManagerSystemStock {
             labelConstraints.gridy = i+1;
             Blank blank = blankArrayList.get(i);
             JButton blankButton = blank.getButton();
-            setUpOtherLabels(labelConstraints, blank);
+            setUpDataLabels(labelConstraints, blank);
             blankButton.setText("Allocate");
+            blankButton.setBackground(Color.GREEN);
+            blankButton.setForeground(Color.BLACK);
             panelSecondary.add(blankButton, buttonConstraints);
-
+            blankButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    new frameOfficeManagerAllocateBlank(main, blank);
+                }
+            });
         }
     }
-    private void setUpTopLabels(){
+    public void setUpTopLabels(){
+        setUpLabels(panelSecondary);
+    }
+
+    static void setUpLabels(JPanel panelSecondary) {
         GridBagConstraints labelConstraints = new GridBagConstraints();
         labelConstraints.anchor = GridBagConstraints.NORTHWEST;
         labelConstraints.gridy = 0;
@@ -78,12 +83,17 @@ public class frameOfficeManagerSystemStock {
                 case 7 -> col.setText("Ticket Price|");
                 case 8 -> col.setText("Seller Name|");
                 case 9 -> col.setText("Customer Number|");
-                case 10 -> col.setText("Date Sold");
+                case 10 -> col.setText("Date Sold|");
             }
             panelSecondary.add(col, labelConstraints);
         }
     }
-    private void setUpOtherLabels(GridBagConstraints labelConstraints, Blank blank){
+
+    private void setUpDataLabels(GridBagConstraints labelConstraints, Blank blank){
+        setUpMoreLabels(labelConstraints, blank, panelSecondary);
+    }
+
+    static void setUpMoreLabels(GridBagConstraints labelConstraints, Blank blank, JPanel panelSecondary) {
         for (int i=0; i<11; i++) {
             JLabel col = new JLabel();
             labelConstraints.gridx = i;
