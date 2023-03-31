@@ -40,7 +40,7 @@
       <scrollpane id="eedb3">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="-1" height="200"/>
+            <maximum-size width="1000" height="200"/>
           </grid>
         </constraints>
         <properties>
@@ -63,7 +63,9 @@
       </scrollpane>
       <scrollpane id="2c557">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <maximum-size width="1000" height="-1"/>
+          </grid>
         </constraints>
         <properties>
           <background color="-1"/>

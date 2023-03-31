@@ -43,17 +43,18 @@ public class frameLogin {
             Connection con = DriverManager.getConnection("jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2018g30",
                     "in2018g30_a", "AqZonm86");
             PreparedStatement statement = con.prepareStatement(
-                    "SELECT name, password, email, address, role FROM users WHERE email = ? AND password = ?");
+                    "SELECT UserID, name, password, email, address, role FROM users WHERE email = ? AND password = ?");
             statement.setString(1, fieldEmail.getText());
             statement.setString(2, String.valueOf(fieldPassword.getPassword()));
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){
+                int userID = resultSet.getInt("userID");
                 String password = resultSet.getString("password");
                 String email = resultSet.getString("email");
                 String address = resultSet.getString("address");
                 String name = resultSet.getString("name");
                 String role = resultSet.getString("role");
-                User user = new User(name, password, email, address, role);
+                User user = new User(userID,name, password, email, address, role);
                 main.setUser(user);
                 switch (role) {
                         case "Customer" -> new frameCustomer(main);

@@ -52,11 +52,15 @@ public class frameOfficeManagerSystemStock {
             blankButton.setText("Allocate");
             blankButton.setBackground(Color.GREEN);
             blankButton.setForeground(Color.BLACK);
+            if (blank.getSellerName()!=null){
+                blankButton.setEnabled(false);
+            }
             panelSecondary.add(blankButton, buttonConstraints);
             blankButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     new frameOfficeManagerAllocateBlank(main, blank);
+                    blankButton.removeActionListener(this);
                 }
             });
         }
@@ -71,6 +75,7 @@ public class frameOfficeManagerSystemStock {
         labelConstraints.gridy = 0;
         for (int i=0; i<11; i++){
             JLabel col = new JLabel();
+            col.setBorder(BorderFactory.createEmptyBorder(0,0,0,10));
             labelConstraints.gridx = i;
             switch (i) {
                 case 0 -> col.setText("Blank Number|");
@@ -96,6 +101,7 @@ public class frameOfficeManagerSystemStock {
     static void setUpMoreLabels(GridBagConstraints labelConstraints, Blank blank, JPanel panelSecondary) {
         for (int i=0; i<11; i++) {
             JLabel col = new JLabel();
+            col.setBorder(BorderFactory.createEmptyBorder(0,0,0,10));
             labelConstraints.gridx = i;
             switch (i){
                 case 0 -> col.setText(String.valueOf(blank.getBlankNumber()));
