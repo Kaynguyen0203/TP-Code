@@ -108,7 +108,7 @@ public class frameOfficeManagerSystemStock {
     static void setUpMoreLabels(GridBagConstraints labelConstraints, Blank blank, JPanel panelSecondary) {
         for (int i=0; i<11; i++) {
             JLabel col = new JLabel();
-            col.setBorder(BorderFactory.createEmptyBorder(0,5,0,5));
+            col.setBorder(BorderFactory.createEmptyBorder(0,15,0,5));
             labelConstraints.gridx = i;
             switch (i){
                 case 0 -> col.setText(String.valueOf(blank.getBlankNumber()));

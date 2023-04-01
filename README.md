@@ -17,3 +17,4 @@ frameAirVia (generate empty blanks in database) <br>
 frameOfficeManagerSystemStock (view all blanks, can allocate blanks to travel advisors)<br>
 frameOfficeManagerAllocateBlank (pick which travel advisor to allocate the blank to)<br>
 frameOfficeManagerAllocatedBlanks (pick which blanks to remove ownership from, given that the corresponding travel advisor didn't do anything with it) <br>
+frameSystemAdminSystemStock (can view all blanks)

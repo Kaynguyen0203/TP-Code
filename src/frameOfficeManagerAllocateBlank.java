@@ -94,7 +94,7 @@ public class frameOfficeManagerAllocateBlank {
     private void setUpDataLabels(GridBagConstraints labelConstraints, User user){
         for (int i=0; i<4; i++) {
             JLabel col = new JLabel();
-            col.setBorder(BorderFactory.createEmptyBorder(0,5,0,5));
+            col.setBorder(BorderFactory.createEmptyBorder(0,15,0,5));
             labelConstraints.gridx = i;
             switch (i){
                 case 0 -> col.setText(String.valueOf(user.getUserID()));
