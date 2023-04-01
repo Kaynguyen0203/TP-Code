@@ -1,19 +1,20 @@
 import javax.swing.*;
+import java.awt.event.ActionListener;
 
 public class Blank {
     private final int blankNumber;
-    private final int dateIssued;
-    private final int dateValidated;
-    private final int ticketType;
-    private final String destination;
-    private final int flightDate;
-    private final int seatNumber;
-    private final int ticketPrice;
-    private final String sellerName;
-    private final String customerName;
-    private final int dateSold;
-    private final JButton button;
-    public Blank(int blankNumber, int dateIssued, int dateValidated, int ticketType, String destination, int flightDate, int seatNumber, int ticketPrice, String sellerName, String customerName, int dateSold) {
+    private int dateIssued;
+    private int dateValidated;
+    private int ticketType;
+    private String destination;
+    private int flightDate;
+    private int seatNumber;
+    private int ticketPrice;
+    private int sellerUserID;
+    private int customerUserID;
+    private int dateSold;
+    private JButton button;
+    public Blank(int blankNumber, int dateIssued, int dateValidated, int ticketType, String destination, int flightDate, int seatNumber, int ticketPrice, int sellerUserID, int customerUserID, int dateSold) {
         this.blankNumber = blankNumber;
         this.dateIssued = dateIssued;
         this.dateValidated = dateValidated;
@@ -22,8 +23,8 @@ public class Blank {
         this.flightDate = flightDate;
         this.seatNumber = seatNumber;
         this.ticketPrice = ticketPrice;
-        this.sellerName = sellerName;
-        this.customerName = customerName;
+        this.sellerUserID = sellerUserID;
+        this.customerUserID = customerUserID;
         this.dateSold = dateSold;
         this.button = new JButton();
     }
@@ -35,8 +36,19 @@ public class Blank {
     public int getFlightDate() {return flightDate;}
     public int getSeatNumber() {return seatNumber;}
     public int getTicketPrice() {return ticketPrice;}
-    public String getSellerName() {return sellerName;}
-    public String getCustomerName() {return customerName;}
+    public int getSellerUserID() {return sellerUserID;}
+    public int getCustomerUserID() {return customerUserID;}
     public int getDateSold() {return dateSold;}
     public JButton getButton() {return button;}
+    public void setDateIssued(int dateIssued) {this.dateIssued = dateIssued;}
+    public void setDateValidated(int dateValidated) {this.dateValidated = dateValidated;}
+    public void setTicketType(int ticketType) {this.ticketType = ticketType;}
+    public void setDestination(String destination) {this.destination = destination;}
+    public void setFlightDate(int flightDate) {this.flightDate = flightDate;}
+    public void setSeatNumber(int seatNumber) {this.seatNumber = seatNumber;}
+    public void setTicketPrice(int ticketPrice) {this.ticketPrice = ticketPrice;}
+    public void setSellerUserID(int sellerUserID) {this.sellerUserID = sellerUserID;}
+    public void setCustomerUserID(int customerUserID) {this.customerUserID = customerUserID;}
+    public void setDateSold(int dateSold) {this.dateSold = dateSold;}
+    public void setButton(JButton button) {this.button = button;}
 }

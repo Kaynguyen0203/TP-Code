@@ -19,7 +19,7 @@ public class frameOfficeManagerAllocatedBlanks {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new frameOfficeManagerAllocateBlank(main, new Blank(1,2,
-                        2,2,"a",2,2,2,"a","a",2));
+                        2,2,"a",2,2,2,1,2,2));
             } /////////////temporarirriri
         });
         buttonGoBack.addActionListener(new ActionListener() {

@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -6,8 +7,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class Main {
-    private Main main;
-    private JFrame mainFrame;
+    private final Main main;
+    private final JFrame mainFrame;
     private User user;
     private ArrayList<Blank> blankArrayList;
     private ArrayList<User> userArrayList;
@@ -36,7 +37,7 @@ public class Main {
                     "in2018g30_a", "AqZonm86");
             PreparedStatement preparedStatement = con.prepareStatement("" +
                     "SELECT blankNumber, dateIssued, dateValidated, ticketType, destination, " +
-                    "flightDate, seatNumber, ticketPrice, sellerName, customerName, dateSold FROM blanks");
+                    "flightDate, seatNumber, ticketPrice, sellerUserID, customerUserID, dateSold FROM blanks");
             ResultSet resultSet = preparedStatement.executeQuery();
             this.blankArrayList = new ArrayList<Blank>();
             while (resultSet.next()){
@@ -48,11 +49,11 @@ public class Main {
                 int flightDate = resultSet.getInt("flightDate");
                 int seatNumber = resultSet.getInt("seatNumber");
                 int ticketPrice = resultSet.getInt("ticketPrice");
-                String sellerName = resultSet.getString("sellerName");
-                String customerName = resultSet.getString("customerName");
+                int sellerUserID = resultSet.getInt("sellerUserID");
+                int customerUserID = resultSet.getInt("customerUserID");
                 int dateSold = resultSet.getInt("dateSold");
                 Blank newBlank = new Blank(blankNumber, dateIssued, dateValidated,ticketType,destination,
-                        flightDate,seatNumber,ticketPrice,sellerName,customerName,dateSold);
+                        flightDate,seatNumber,ticketPrice,sellerUserID,customerUserID,dateSold);
                 blankArrayList.add(newBlank);
             }
             preparedStatement.close();

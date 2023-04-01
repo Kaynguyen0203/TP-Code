@@ -1,18 +1,16 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class frameOfficeManagerAllocateBlank {
-    private Main main;
-    private JFrame frame;
-    private Blank blank;
+    private final Main main;
+    private final JFrame frame;
+    private final Blank blank;
     private JButton buttonGoBack;
     private JPanel panelOfficeManagerAllocateBlank;
     private JPanel panelSecondary;
@@ -28,14 +26,22 @@ public class frameOfficeManagerAllocateBlank {
         labelConstraints.anchor = GridBagConstraints.WEST;
         setUpBlankLabels(labelConstraints, blank);
         setUpTravelAdvisors();
+        setUpTravelAdvisorsTopLabels();
         frame.pack();
+        System.out.println(blank.getBlankNumber());
         buttonGoBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new frameOfficeManagerSystemStock(main);
+                for (User user: main.getUserArrayList()){
+                    for (ActionListener listener: user.getButton().getActionListeners()){
+                        user.getButton().removeActionListener(listener);
+                    }
+                }
             }
         });
     }
+
     private void setUpTopLabels(){
         frameOfficeManagerSystemStock.setUpLabels(panelSecondary);
     }
@@ -43,7 +49,6 @@ public class frameOfficeManagerAllocateBlank {
         frameOfficeManagerSystemStock.setUpMoreLabels(labelConstraints, blank, panelSecondary);
     }
     private void setUpTravelAdvisors(){
-        setUpTravelAdvisorsTopLabels();
         ArrayList<User> travelAdvisorArrayList = new ArrayList<User>();
         ArrayList<User> userArrayList = main.getUserArrayList();
         for (User user : userArrayList) {
@@ -71,16 +76,40 @@ public class frameOfficeManagerAllocateBlank {
             userButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    allocateBlank(user, blank);
+                    System.out.println(blank.getBlankNumber());
+                    userButton.removeActionListener(this);
                     new frameOfficeManagerSystemStock(main);
                     JOptionPane.showMessageDialog(frame, "Blank allocated", "Success", JOptionPane.INFORMATION_MESSAGE);
                 }
             });
         }
     }
+    private void allocateBlank(User user, Blank blank){
+        System.out.println(blank.getBlankNumber());
+        System.out.println(user.getUserID());
+    }
+    private void allocateBlankk(User user, Blank blank){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2018g30",
+                    "in2018g30_a", "AqZonm86");
+            PreparedStatement preparedStatement = con.prepareStatement("UPDATE blanks SET sellerUserID = ?" +
+                    " WHERE blankNumber = ?");
+            preparedStatement.setInt(1, user.getUserID());
+            preparedStatement.setInt(2, blank.getBlankNumber());
+            preparedStatement.executeUpdate();
+            con.close();
+            preparedStatement.close();
+            blank.setSellerUserID(user.getUserID());
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     private void setUpDataLabels(GridBagConstraints labelConstraints, User user){
         for (int i=0; i<4; i++) {
             JLabel col = new JLabel();
-            col.setBorder(BorderFactory.createEmptyBorder(0,0,0,10));
+            col.setBorder(BorderFactory.createEmptyBorder(0,5,0,5));
             labelConstraints.gridx = i;
             switch (i){
                 case 0 -> col.setText(String.valueOf(user.getUserID()));
@@ -97,13 +126,13 @@ public class frameOfficeManagerAllocateBlank {
         labelConstraints.gridy = 0;
         for (int i=0; i<4; i++){
             JLabel col = new JLabel();
-            col.setBorder(BorderFactory.createEmptyBorder(0,0,0,10));
+            col.setBorder(BorderFactory.createEmptyBorder(0,5,0,5));
             labelConstraints.gridx = i;
             switch (i) {
-                case 0 -> col.setText("User ID|");
-                case 1 -> col.setText("Name|");
-                case 2 -> col.setText("Email|");
-                case 3 -> col.setText("Address|");
+                case 0 -> col.setText("|User ID|");
+                case 1 -> col.setText("|Name|");
+                case 2 -> col.setText("|Email|");
+                case 3 -> col.setText("|Address|");
             }
             panelTertiary.add(col, labelConstraints);
         }

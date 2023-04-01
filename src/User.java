@@ -2,11 +2,11 @@ import javax.swing.*;
 
 public class User {
     private final int userID;
-    private final String name;
-    private final String password;
-    private final String email;
-    private final String address;
-    private final String role;
+    private String name;
+    private String password;
+    private String email;
+    private String address;
+    private String role;
     private final JButton button;
     User (int userID, String name, String password, String email, String address, String role){
         this.userID = userID;
@@ -24,4 +24,9 @@ public class User {
     public String getAddress() {return address;}
     public String getRole() {return role;}
     public JButton getButton() {return button;}
+    public void setName(String name) {this.name = name;}
+    public void setPassword(String password) {this.password = password;}
+    public void setEmail(String email) {this.email = email;}
+    public void setAddress(String address) {this.address = address;}
+    public void setRole(String role) {this.role = role;}
 }
