@@ -11,10 +11,9 @@ frameCustomer <br>
 frameSystemAdmin <br>
 frameTravelAdvisor <br>
 
-(frames that do things other than navigation) <br>
-frameCreateAccount <br>
-frameLogin <br>
-frameAirVia <br>
-frameOfficeManager <br>
-frameOfficeManagerSystemStock <br>
-frameOfficeManagerAllocateBlanks <br>
+frameCreateAccount (account creation)<br>
+frameLogin (login) <br> 
+frameAirVia (generate empty blanks in database) <br>
+frameOfficeManagerSystemStock (view all blanks, can allocate blanks to travel advisors)<br>
+frameOfficeManagerAllocateBlank (pick which travel advisor to allocate the blank to)<br>
+frameOfficeManagerAllocatedBlanks (pick which blanks to remove ownership from, given that the corresponding travel advisor didn't do anything with it) <br>
