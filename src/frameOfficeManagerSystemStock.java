@@ -29,9 +29,13 @@ public class frameOfficeManagerSystemStock {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new frameOfficeManager(main);
+                for (Blank blank: main.getBlankArrayList()){
+                    for (ActionListener listener: blank.getButton().getActionListeners()){
+                        blank.getButton().removeActionListener(listener);
+                    }
+                }
             }
         });
-
     }
     private void setUpButtons(){
         ArrayList<Blank> blankArrayList = main.getBlankArrayList();

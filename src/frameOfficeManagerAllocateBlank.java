@@ -28,7 +28,6 @@ public class frameOfficeManagerAllocateBlank {
         setUpTravelAdvisors();
         setUpTravelAdvisorsTopLabels();
         frame.pack();
-        System.out.println(blank.getBlankNumber());
         buttonGoBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -86,10 +85,6 @@ public class frameOfficeManagerAllocateBlank {
         }
     }
     private void allocateBlank(User user, Blank blank){
-        System.out.println(blank.getBlankNumber());
-        System.out.println(user.getUserID());
-    }
-    private void allocateBlankk(User user, Blank blank){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2018g30",

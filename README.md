@@ -17,4 +17,4 @@ frameLogin <br>
 frameAirVia <br>
 frameOfficeManager <br>
 frameOfficeManagerSystemStock <br>
-frameOfficeManagerAllocateBlanks - semi complete <br>
+frameOfficeManagerAllocateBlanks <br>
