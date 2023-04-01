@@ -21,31 +21,21 @@ public class frameOfficeManagerAllocateBlank {
         this.blank = blank;
         frame = main.getMain().getMainFrame();
         frame.setContentPane(panelOfficeManagerAllocateBlank);
-        setUpTopLabels();
+        frameOfficeManagerSystemStock.setUpLabels(panelSecondary);
         GridBagConstraints labelConstraints = new GridBagConstraints();
         labelConstraints.anchor = GridBagConstraints.WEST;
-        setUpBlankLabels(labelConstraints, blank);
+        frameOfficeManagerSystemStock.setUpMoreLabels(labelConstraints, blank, panelSecondary);
         setUpTravelAdvisors();
         setUpTravelAdvisorsTopLabels();
         frame.pack();
         buttonGoBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                main.removeUserActionListeners();
                 new frameOfficeManagerSystemStock(main);
-                for (User user: main.getUserArrayList()){
-                    for (ActionListener listener: user.getButton().getActionListeners()){
-                        user.getButton().removeActionListener(listener);
-                    }
-                }
+
             }
         });
-    }
-
-    private void setUpTopLabels(){
-        frameOfficeManagerSystemStock.setUpLabels(panelSecondary);
-    }
-    private void setUpBlankLabels(GridBagConstraints labelConstraints, Blank blank){
-        frameOfficeManagerSystemStock.setUpMoreLabels(labelConstraints, blank, panelSecondary);
     }
     private void setUpTravelAdvisors(){
         ArrayList<User> travelAdvisorArrayList = new ArrayList<User>();

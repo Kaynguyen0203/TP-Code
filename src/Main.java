@@ -30,6 +30,20 @@ public class Main {
     public void setUser(User newUser) {this.user = newUser;}
     public ArrayList<Blank> getBlankArrayList() {return blankArrayList;}
     public ArrayList<User> getUserArrayList() {return userArrayList;}
+    public void removeBlankActionListeners(){
+        for (Blank blank: main.getBlankArrayList()){
+            for (ActionListener listener: blank.getButton().getActionListeners()){
+                blank.getButton().removeActionListener(listener);
+            }
+        }
+    }
+    public void removeUserActionListeners(){
+        for (User user: main.getUserArrayList()){
+            for (ActionListener listener: user.getButton().getActionListeners()){
+                user.getButton().removeActionListener(listener);
+            }
+        }
+    }
     private void setUpBlanks(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");

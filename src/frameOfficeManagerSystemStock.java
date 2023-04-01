@@ -22,28 +22,29 @@ public class frameOfficeManagerSystemStock {
         buttonReallocateBlanks.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                main.removeBlankActionListeners();
                 new frameOfficeManagerAllocatedBlanks(main);
             }
         });
         buttonGoBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                main.removeBlankActionListeners();
                 new frameOfficeManager(main);
-                for (Blank blank: main.getBlankArrayList()){
-                    for (ActionListener listener: blank.getButton().getActionListeners()){
-                        blank.getButton().removeActionListener(listener);
-                    }
-                }
             }
         });
     }
-    private void setUpButtons(){
-        ArrayList<Blank> blankArrayList = main.getBlankArrayList();
+    static GridBagConstraints setButtonConstraints(){
         GridBagConstraints buttonConstraints = new GridBagConstraints();
         buttonConstraints.anchor = GridBagConstraints.NORTHEAST;
         buttonConstraints.gridx = 11;
         buttonConstraints.weightx = 1.0;
         buttonConstraints.weighty = 1.0;
+        return buttonConstraints;
+    }
+    private void setUpButtons(){
+        ArrayList<Blank> blankArrayList = main.getBlankArrayList();
+        GridBagConstraints buttonConstraints = setButtonConstraints();
         GridBagConstraints labelConstraints = new GridBagConstraints();
         labelConstraints.anchor = GridBagConstraints.WEST;
         for (int i=0; i<blankArrayList.size(); i++){
