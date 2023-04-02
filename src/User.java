@@ -8,7 +8,8 @@ public class User {
     private String address;
     private String role;
     private final JButton button;
-    User (int userID, String name, String password, String email, String address, String role){
+    private int discount;
+    User (int userID, String name, String password, String email, String address, String role, int discount){
         this.userID = userID;
         this.name = name;
         this.password = password;
@@ -16,6 +17,7 @@ public class User {
         this.address = address;
         this.role = role;
         this.button = new JButton();
+        this.discount = discount;
     }
     public int getUserID() {return userID;}
     public String getName() {return name;}
@@ -24,9 +26,11 @@ public class User {
     public String getAddress() {return address;}
     public String getRole() {return role;}
     public JButton getButton() {return button;}
+    public int getDiscount() {return discount;}
     public void setName(String name) {this.name = name;}
     public void setPassword(String password) {this.password = password;}
     public void setEmail(String email) {this.email = email;}
     public void setAddress(String address) {this.address = address;}
     public void setRole(String role) {this.role = role;}
+    public void setDiscount(int discount) {this.discount = discount;}
 }

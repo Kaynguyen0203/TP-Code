@@ -54,7 +54,17 @@ public class frameLogin {
                 String address = resultSet.getString("address");
                 String name = resultSet.getString("name");
                 String role = resultSet.getString("role");
-                User user = new User(userID,name, password, email, address, role);
+                int discount = 0;
+                if (role.equals("Customer")){
+                    PreparedStatement statement2 = con.prepareStatement("SELECT discountPercent FROM usersCustomers " +
+                            "WHERE UserID = ?");
+                    statement2.setInt(1, userID);
+                    ResultSet resultSet2 = statement2.executeQuery();
+                    if (resultSet2.next()){
+                        discount = resultSet2.getInt("discountPercent");
+                    }
+                }
+                User user = new User(userID,name, password, email, address, role, discount );
                 main.setUser(user);
                 switch (role) {
                         case "Customer" -> new frameCustomer(main);

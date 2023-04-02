@@ -78,7 +78,7 @@ public class frameCreateAccount {
 
             int addedRows = preparedStatement.executeUpdate();
             if (addedRows > 0){
-                user = new User(highestUserID +1, name, password, email, address, role);
+                user = new User(highestUserID +1, name, password, email, address, role, 0);
             }
             if (role.equals("Customer")){
                 PreparedStatement preparedStatement2 = con.prepareStatement("INSERT INTO usersCustomers (UserID) Values (?)");

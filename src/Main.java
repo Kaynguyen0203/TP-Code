@@ -187,7 +187,17 @@ public class Main {
                 String email = resultSet.getString("email");
                 String address = resultSet.getString("address");
                 String role = resultSet.getString("role");
-                User newUser= new User(userID, name, password, email, address, role);
+                int discount = 0;
+                if (role.equals("Customer")){
+                    PreparedStatement statement2 = con.prepareStatement("SELECT discountPercent FROM usersCustomers " +
+                            "WHERE UserID = ?");
+                    statement2.setInt(1, userID);
+                    ResultSet resultSet2 = statement2.executeQuery();
+                    if (resultSet2.next()){
+                        discount = resultSet2.getInt("discountPercent");
+                    }
+                }
+                User newUser= new User(userID, name, password, email, address, role, discount);
                 userArrayList.add(newUser);
             }
             preparedStatement.close();
