@@ -18,9 +18,11 @@ frameOfficeManagerAllocatedBlanks (pick which blanks to remove ownership from, g
 frameSystemAdminSystemStock (can view all blanks) <br>
 frameSystemAdminStaffList (can view all staff details) <br>
 frameSystemAdminEditContactDetails (can edit staff details of choice) <br>
+frameOfficeManagerCurrentCustomers (can see all the current customers and select to configure discounts) <br>
+frameOfficeManagerSetDiscount (can set fixed or flexible discount)
 
 Air Via frames (1/1) <br>
-Office Manager frames (4/9) <br>
+Office Manager frames (6/9) <br>
 System Admin frames (4/7) <br>
 Travel Advisor frames (1/9) <br>
 Customer frames (1/6) <br>

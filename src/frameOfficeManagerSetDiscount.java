@@ -1,6 +1,11 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
 
 public class frameOfficeManagerSetDiscount {
     private Main main;
@@ -12,23 +17,114 @@ public class frameOfficeManagerSetDiscount {
     private JTextField fieldDiscountP;
     private JButton buttonConfirm;
     private JButton buttonGoBack;
+    private JPanel panelSecondary;
+    private JPanel panelTertiary;
+    private User user;
 
-    public frameOfficeManagerSetDiscount(Main main) {
+    public frameOfficeManagerSetDiscount(Main main, User user) {
         this.main = main;
+        this.user = user;
         frame = main.getMain().getMainFrame();
         frame.setContentPane(panelOfficeManagerSetDiscount);
+        main.setUpUserTopLabels(panelSecondary);
+        GridBagConstraints labelConstraints = new GridBagConstraints();
+        labelConstraints.anchor = GridBagConstraints.WEST;
+        main.setUpUserDataLabels(labelConstraints, user, panelSecondary);
+        setUpDiscountLabel();
+        buttonGroup();
         frame.pack();
         buttonGoBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                main.removeUserActionListeners();
+                removeRadioListeners();
                 new frameOfficeManagerCurrentCustomers(main);
             }
         });
         buttonConfirm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                applyDiscount();
+                removeRadioListeners();
 
+                new frameOfficeManagerCurrentCustomers(main);
             }
         });
+    }
+    private void setUpDiscountLabel(){
+        JLabel col = new JLabel();
+        GridBagConstraints labelConstraints = new GridBagConstraints();
+        labelConstraints.anchor = GridBagConstraints.WEST;
+        col.setText("Current Discount: "+ user.getDiscount());
+        panelTertiary.add(col, labelConstraints);
+    }
+    private void applyDiscount(){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2018g30",
+                    "in2018g30_a", "AqZonm86");
+            int discount;
+            if (radioButtonFixed.isSelected()){
+                PreparedStatement preparedStatement = con.prepareStatement("UPDATE usersCustomers SET discountPercent = ?" +
+                        " WHERE userID = ?");
+                discount = Integer.parseInt(fieldDiscount.getText());
+                preparedStatement.setInt(1, discount);
+                preparedStatement.setInt(2, user.getUserID());
+                preparedStatement.executeUpdate();
+                preparedStatement.close();
+                user.setDiscount(discount);
+            }
+            if (radioButtonFlex.isSelected()){
+                PreparedStatement preparedStatement = con.prepareStatement("UPDATE usersCustomers SET discountPercent =?" +
+                        " WHERE userID = ?");
+                int numberOfSalesPer = Integer.parseInt(fieldDiscountP.getText());
+                int numberOfSales=0;
+                ArrayList<Blank> array = main.getBlankArrayList();
+                for (Blank blank : array){
+                    if (blank.getCustomerUserID() == user.getUserID()){
+                        numberOfSales++;
+                    }
+                }
+                discount = numberOfSales/numberOfSalesPer;
+                preparedStatement.setInt(1, discount);
+                preparedStatement.setInt(2, user.getUserID());
+                preparedStatement.executeUpdate();
+                preparedStatement.close();
+                user.setDiscount(discount);
+            }
+            JOptionPane.showMessageDialog(frame, "Discount Set", "Success", JOptionPane.INFORMATION_MESSAGE);
+            con.close();
+        } catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(frame, "fields not set properly", "Invalid", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    private void buttonGroup(){
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(radioButtonFixed);
+        buttonGroup.add(radioButtonFlex);
+        fieldDiscountP.setEnabled(false);
+        radioButtonFixed.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fieldDiscount.setEnabled(true);
+                fieldDiscountP.setEnabled(false);
+            }
+        });
+        radioButtonFlex.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fieldDiscountP.setEnabled(true);
+                fieldDiscount.setEnabled(false);
+            }
+        });
+    }
+    private void removeRadioListeners(){
+        for (ActionListener listener: radioButtonFlex.getActionListeners()){
+            radioButtonFlex.removeActionListener(listener);
+        }
+        for (ActionListener listener: radioButtonFixed.getActionListeners()) {
+            radioButtonFixed.removeActionListener(listener);
+        }
     }
 }

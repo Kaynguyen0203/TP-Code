@@ -19,6 +19,7 @@ public class frameOfficeManager {
         buttonAccessSystemStock.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                main.removeBlankActionListeners();
                 new frameOfficeManagerSystemStock(main);
             }
         });
@@ -31,6 +32,7 @@ public class frameOfficeManager {
         buttonSetDiscounts.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                main.removeUserActionListeners();
                 new frameOfficeManagerCurrentCustomers(main);
             }
         });
