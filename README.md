@@ -20,8 +20,8 @@ frameSystemAdminStaffList (can view all staff details) <br>
 frameSystemAdminEditContactDetails (can edit staff details of choice) <br>
 
 Air Via frames (1/1) <br>
-Office Manager frames (4/10) <br>
+Office Manager frames (4/9) <br>
 System Admin frames (4/7) <br>
 Travel Advisor frames (1/9) <br>
 Customer frames (1/6) <br>
-2 more from login and create account
+login, create account (2/2) <br>
