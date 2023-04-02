@@ -47,6 +47,13 @@ public class frameCreateAccount {
         }
         user = addUserToSQL(name, password, email, address, role);
         if (user != null){
+            JOptionPane.showMessageDialog(frame, "Account created", "Sucess", JOptionPane.INFORMATION_MESSAGE);
+            user.setName(name);
+            user.setPassword(password);
+            user.setEmail(email);
+            user.setAddress(address);
+            user.setRole(role);
+            main.getUserArrayList().add(user);
             new frameLogin(main);
         }
         else {
@@ -60,7 +67,7 @@ public class frameCreateAccount {
             Connection con = DriverManager.getConnection("jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2018g30",
                     "in2018g30_a", "AqZonm86");
             PreparedStatement preparedStatement = con.prepareStatement(
-                    "INSERT INTO users (UserID, name, password, email, address, role VALUES (?,?,?,?,?)");
+                    "INSERT INTO users (UserID, name, password, email, address, role) VALUES (?,?,?,?,?,?)");
             int highestUserID = getHighestUserID();
             preparedStatement.setInt(1, highestUserID+1);
             preparedStatement.setString(2, name);
@@ -72,6 +79,12 @@ public class frameCreateAccount {
             int addedRows = preparedStatement.executeUpdate();
             if (addedRows > 0){
                 user = new User(highestUserID +1, name, password, email, address, role);
+            }
+            if (role.equals("Customer")){
+                PreparedStatement preparedStatement2 = con.prepareStatement("INSERT INTO usersCustomers (UserID) Values (?)");
+                preparedStatement2.setInt(1, highestUserID + 1);
+                preparedStatement2.executeUpdate();
+                preparedStatement2.close();
             }
             preparedStatement.close();
             con.close();

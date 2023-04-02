@@ -80,6 +80,7 @@ public class Main {
         GridBagConstraints labelConstraints = new GridBagConstraints();
         labelConstraints.anchor = GridBagConstraints.NORTHWEST;
         labelConstraints.gridy = 0;
+
         for (int i=0; i<11; i++){
             JLabel col = new JLabel();
             col.setBorder(BorderFactory.createEmptyBorder(0,5,0,5));
