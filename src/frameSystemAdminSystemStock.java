@@ -15,7 +15,7 @@ public class frameSystemAdminSystemStock {
         this.main = main;
         frame = main.getMain().getMainFrame();
         frame.setContentPane(panelSystemAdminSystemStock);
-        frameOfficeManagerSystemStock.setUpLabels(panelSecondary);
+        main.setUpBlankTopLabels(panelSecondary);
         setUpLabels();
         frame.pack();
         buttonGoBack.addActionListener(new ActionListener() {
@@ -32,7 +32,7 @@ public class frameSystemAdminSystemStock {
         for (int i=0; i<blankArrayList.size(); i++){
             labelConstraints.gridy = i+1;
             Blank blank = blankArrayList.get(i);
-            frameOfficeManagerSystemStock.setUpMoreLabels(labelConstraints, blank, panelSecondary);
+            main.setUpBlankDataLabels(labelConstraints, blank, panelSecondary);
         }
     }
 }

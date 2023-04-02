@@ -8,8 +8,8 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 public class frameOfficeManagerAllocatedBlanks {
-    private Main main;
-    private JFrame frame;
+    private final Main main;
+    private final JFrame frame;
     private JPanel panelOfficeManagerAllocatedBlanks;
     private JButton buttonGoBack;
     private JPanel panelSecondary;
@@ -18,7 +18,7 @@ public class frameOfficeManagerAllocatedBlanks {
         this.main = main;
         frame = main.getMain().getMainFrame();
         frame.setContentPane(panelOfficeManagerAllocatedBlanks);
-        frameOfficeManagerSystemStock.setUpLabels(panelSecondary);
+        main.setUpBlankTopLabels(panelSecondary);
         setUpButtons();
         frame.pack();
         buttonGoBack.addActionListener(new ActionListener() {
@@ -31,7 +31,7 @@ public class frameOfficeManagerAllocatedBlanks {
     }
     private void setUpButtons(){
         ArrayList<Blank> blankArrayList = main.getBlankArrayList();
-        GridBagConstraints buttonConstraints = frameOfficeManagerSystemStock.setButtonConstraints();
+        GridBagConstraints buttonConstraints = main.setBlankButtonConstraints();
         GridBagConstraints labelConstraints = new GridBagConstraints();
         labelConstraints.anchor = GridBagConstraints.WEST;
         for (int i=0; i<blankArrayList.size(); i++){
@@ -40,7 +40,7 @@ public class frameOfficeManagerAllocatedBlanks {
             Blank blank = blankArrayList.get(i);
             if (blank.getSellerUserID()!=0){
                 JButton blankButton = blank.getButton();
-                frameOfficeManagerSystemStock.setUpMoreLabels(labelConstraints, blank, panelSecondary);
+                main.setUpBlankDataLabels(labelConstraints, blank, panelSecondary);
                 blankButton.setText("Reallocate");
                 blankButton.setBackground(Color.GREEN);
                 blankButton.setForeground(Color.BLACK);
@@ -51,7 +51,7 @@ public class frameOfficeManagerAllocatedBlanks {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             removeBlankFromTravelAdvisor(blank);
-                            blankButton.removeActionListener(this);
+                            main.removeBlankActionListeners();
                             new frameOfficeManagerSystemStock(main);
                             JOptionPane.showMessageDialog(frame, "Blank removed from travel advisor\nBlank can be allocated again", "Success", JOptionPane.INFORMATION_MESSAGE);
                         }

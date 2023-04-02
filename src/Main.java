@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -42,6 +43,100 @@ public class Main {
             for (ActionListener listener: user.getButton().getActionListeners()){
                 user.getButton().removeActionListener(listener);
             }
+        }
+    }
+    public GridBagConstraints setBlankButtonConstraints(){
+        GridBagConstraints buttonConstraints = new GridBagConstraints();
+        buttonConstraints.anchor = GridBagConstraints.NORTHEAST;
+        buttonConstraints.gridx = 11;
+        buttonConstraints.weightx = 1.0;
+        buttonConstraints.weighty = 1.0;
+        return buttonConstraints;
+    }
+    public GridBagConstraints setUserButtonConstraints(){
+        GridBagConstraints buttonConstraints = new GridBagConstraints();
+        buttonConstraints.anchor = GridBagConstraints.NORTHEAST;
+        buttonConstraints.gridx = 5;
+        buttonConstraints.weightx = 1.0;
+        buttonConstraints.weighty = 1.0;
+        return buttonConstraints;
+    }
+    public void setUpUserDataLabels(GridBagConstraints labelConstraints, User user, JPanel panelTertiary) {
+        for (int i=0; i<5; i++) {
+            JLabel col = new JLabel();
+            col.setBorder(BorderFactory.createEmptyBorder(0,5,0,5));
+            labelConstraints.gridx = i;
+            switch (i){
+                case 0 -> col.setText(String.valueOf(user.getUserID()));
+                case 1 -> col.setText(String.valueOf(user.getName()));
+                case 2 -> col.setText(String.valueOf(user.getEmail()));
+                case 3 -> col.setText(String.valueOf(user.getAddress()));
+                case 4 -> col.setText(String.valueOf(user.getRole()));
+            }
+            panelTertiary.add(col, labelConstraints);
+        }
+    }
+    public void setUpBlankTopLabels(JPanel panelSecondary) {
+        GridBagConstraints labelConstraints = new GridBagConstraints();
+        labelConstraints.anchor = GridBagConstraints.NORTHWEST;
+        labelConstraints.gridy = 0;
+        for (int i=0; i<11; i++){
+            JLabel col = new JLabel();
+            col.setBorder(BorderFactory.createEmptyBorder(0,5,0,5));
+            labelConstraints.gridx = i;
+            switch (i) {
+                case 0 -> col.setText("|Blank Number|");
+                case 1 -> col.setText("|Date Issued|");
+                case 2 -> col.setText("|Date Validated|");
+                case 3 -> col.setText("|Ticket Type|");
+                case 4 -> col.setText("|Destination|");
+                case 5 -> col.setText("|Flight Date|");
+                case 6 -> col.setText("|Seat Number|");
+                case 7 -> col.setText("|Ticket Price|");
+                case 8 -> col.setText("|Seller UserID|");
+                case 9 -> col.setText("|Customer UserID|");
+                case 10 -> col.setText("|Date Sold|");
+            }
+            panelSecondary.add(col, labelConstraints);
+        }
+    }
+    public void setUpBlankDataLabels(GridBagConstraints labelConstraints, Blank blank, JPanel panelSecondary) {
+        for (int i=0; i<11; i++) {
+            JLabel col = new JLabel();
+            col.setBorder(BorderFactory.createEmptyBorder(0,5,0,5));
+            labelConstraints.gridx = i;
+            switch (i){
+                case 0 -> col.setText(String.valueOf(blank.getBlankNumber()));
+                case 1 -> col.setText(String.valueOf(blank.getDateIssued()));
+                case 2 -> col.setText(String.valueOf(blank.getDateValidated()));
+                case 3 -> col.setText(String.valueOf(blank.getTicketType()));
+                case 4 -> col.setText(String.valueOf(blank.getDestination()));
+                case 5 -> col.setText(String.valueOf(blank.getFlightDate()));
+                case 6 -> col.setText(String.valueOf(blank.getSeatNumber()));
+                case 7 -> col.setText(String.valueOf(blank.getTicketPrice()));
+                case 8 -> col.setText(String.valueOf(blank.getSellerUserID()));
+                case 9 -> col.setText(String.valueOf(blank.getCustomerUserID()));
+                case 10 -> col.setText(String.valueOf(blank.getDateSold()));
+            }
+            panelSecondary.add(col, labelConstraints);
+        }
+    }
+    public void setUpUserTopLabels(JPanel panel) {
+        GridBagConstraints labelConstraints = new GridBagConstraints();
+        labelConstraints.anchor = GridBagConstraints.NORTHWEST;
+        labelConstraints.gridy = 0;
+        for (int i=0; i<5; i++){
+            JLabel col = new JLabel();
+            col.setBorder(BorderFactory.createEmptyBorder(0,5,0,5));
+            labelConstraints.gridx = i;
+            switch (i) {
+                case 0 -> col.setText("|User ID|");
+                case 1 -> col.setText("|Name|");
+                case 2 -> col.setText("|Email|");
+                case 3 -> col.setText("|Address|");
+                case 4 -> col.setText("|Role|");
+            }
+            panel.add(col, labelConstraints);
         }
     }
     private void setUpBlanks(){

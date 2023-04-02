@@ -4,8 +4,8 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 public class frameLogin {
-    private Main main;
-    private JFrame frame;
+    private final Main main;
+    private final JFrame frame;
     private JTextField fieldEmail;
     private JPasswordField fieldPassword;
     private JButton buttonEnter;

@@ -16,10 +16,12 @@ frameOfficeManagerSystemStock (view all blanks, can allocate blanks to travel ad
 frameOfficeManagerAllocateBlank (pick which travel advisor to allocate the blank to)<br>
 frameOfficeManagerAllocatedBlanks (pick which blanks to remove ownership from, given that the corresponding travel advisor didn't do anything with it) <br>
 frameSystemAdminSystemStock (can view all blanks) <br>
+frameSystemAdminStaffList (can view all staff details) <br>
+frameSystemAdminEditContactDetails (can edit staff details of choice) <br>
 
 Air Via frames (1/1) <br>
 Office Manager frames (4/10) <br>
-System Admin frames (2/8) <br>
+System Admin frames (4/7) <br>
 Travel Advisor frames (1/9) <br>
 Customer frames (1/6) <br>
 2 more from login and create account

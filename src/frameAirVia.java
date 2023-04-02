@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class frameAirVia {
-    private Main main;
-    private JFrame frame;
+    private final Main main;
+    private final JFrame frame;
     private JPanel panelAirVia;
     private JTextField fieldBlankAmount;
     private JButton buttonSend;

@@ -21,12 +21,12 @@ public class frameOfficeManagerAllocateBlank {
         this.blank = blank;
         frame = main.getMain().getMainFrame();
         frame.setContentPane(panelOfficeManagerAllocateBlank);
-        frameOfficeManagerSystemStock.setUpLabels(panelSecondary);
+        main.setUpBlankTopLabels(panelSecondary);
         GridBagConstraints labelConstraints = new GridBagConstraints();
         labelConstraints.anchor = GridBagConstraints.WEST;
-        frameOfficeManagerSystemStock.setUpMoreLabels(labelConstraints, blank, panelSecondary);
-        setUpTravelAdvisors();
-        setUpTravelAdvisorsTopLabels();
+        main.setUpBlankDataLabels(labelConstraints, blank, panelSecondary);
+        setUpTravelAdvisorsList();
+        main.setUpUserTopLabels(panelTertiary);
         frame.pack();
         buttonGoBack.addActionListener(new ActionListener() {
             @Override
@@ -37,7 +37,7 @@ public class frameOfficeManagerAllocateBlank {
             }
         });
     }
-    private void setUpTravelAdvisors(){
+    private void setUpTravelAdvisorsList(){
         ArrayList<User> travelAdvisorArrayList = new ArrayList<User>();
         ArrayList<User> userArrayList = main.getUserArrayList();
         for (User user : userArrayList) {
@@ -45,11 +45,7 @@ public class frameOfficeManagerAllocateBlank {
                 travelAdvisorArrayList.add(user);
             }
         }
-        GridBagConstraints buttonConstraints = new GridBagConstraints();
-        buttonConstraints.anchor = GridBagConstraints.NORTHEAST;
-        buttonConstraints.gridx = 4;
-        buttonConstraints.weightx = 1.0;
-        buttonConstraints.weighty = 1.0;
+        GridBagConstraints buttonConstraints = main.setUserButtonConstraints();
         GridBagConstraints labelConstraints = new GridBagConstraints();
         labelConstraints.anchor = GridBagConstraints.WEST;
         for (int i=0; i<travelAdvisorArrayList.size(); i++) {
@@ -57,7 +53,7 @@ public class frameOfficeManagerAllocateBlank {
             labelConstraints.gridy = i + 1;
             User user = travelAdvisorArrayList.get(i);
             JButton userButton = user.getButton();
-            setUpDataLabels(labelConstraints, user);
+            main.setUpUserDataLabels(labelConstraints, user, panelTertiary);
             userButton.setText("Allocate");
             userButton.setBackground(Color.GREEN);
             userButton.setForeground(Color.BLACK);
@@ -66,8 +62,7 @@ public class frameOfficeManagerAllocateBlank {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     allocateBlank(user, blank);
-                    System.out.println(blank.getBlankNumber());
-                    userButton.removeActionListener(this);
+                    main.removeUserActionListeners();
                     new frameOfficeManagerSystemStock(main);
                     JOptionPane.showMessageDialog(frame, "Blank allocated", "Success", JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -89,37 +84,6 @@ public class frameOfficeManagerAllocateBlank {
             blank.setSellerUserID(user.getUserID());
         } catch(Exception e){
             e.printStackTrace();
-        }
-    }
-    private void setUpDataLabels(GridBagConstraints labelConstraints, User user){
-        for (int i=0; i<4; i++) {
-            JLabel col = new JLabel();
-            col.setBorder(BorderFactory.createEmptyBorder(0,15,0,5));
-            labelConstraints.gridx = i;
-            switch (i){
-                case 0 -> col.setText(String.valueOf(user.getUserID()));
-                case 1 -> col.setText(String.valueOf(user.getName()));
-                case 2 -> col.setText(String.valueOf(user.getEmail()));
-                case 3 -> col.setText(String.valueOf(user.getAddress()));
-            }
-            panelTertiary.add(col, labelConstraints);
-        }
-    }
-    private void setUpTravelAdvisorsTopLabels(){
-        GridBagConstraints labelConstraints = new GridBagConstraints();
-        labelConstraints.anchor = GridBagConstraints.NORTHWEST;
-        labelConstraints.gridy = 0;
-        for (int i=0; i<4; i++){
-            JLabel col = new JLabel();
-            col.setBorder(BorderFactory.createEmptyBorder(0,5,0,5));
-            labelConstraints.gridx = i;
-            switch (i) {
-                case 0 -> col.setText("|User ID|");
-                case 1 -> col.setText("|Name|");
-                case 2 -> col.setText("|Email|");
-                case 3 -> col.setText("|Address|");
-            }
-            panelTertiary.add(col, labelConstraints);
         }
     }
 }
