@@ -78,9 +78,10 @@ public class frameOfficeManagerAllocateBlank {
             Connection con = DriverManager.getConnection("jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2018g30",
                     "in2018g30_a", "AqZonm86");
             PreparedStatement preparedStatement = con.prepareStatement("UPDATE blanks SET sellerUserID = ?" +
-                    " WHERE blankNumber = ?");
+                    " WHERE blankNumber = ? AND ticketType = ?");
             preparedStatement.setInt(1, user.getUserID());
             preparedStatement.setInt(2, blank.getBlankNumber());
+            preparedStatement.setInt(3, blank.getTicketType());
             preparedStatement.executeUpdate();
             con.close();
             preparedStatement.close();

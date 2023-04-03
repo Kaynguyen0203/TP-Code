@@ -30,7 +30,7 @@ public class frameTravelAdvisorEmptyBlanks {
         ArrayList<Blank> blankArrayList = main.getBlankArrayList();
         ArrayList<Blank> toBeValidatedArrayList = new ArrayList<Blank>();
         for (Blank blank : blankArrayList){
-            if (blank.getDateValidated()==0){
+            if (main.getUser().getUserID()==blank.getSellerUserID()){
                 toBeValidatedArrayList.add(blank);
             }
         }
@@ -44,6 +44,11 @@ public class frameTravelAdvisorEmptyBlanks {
             JButton blankButton = blank.getButton();
             main.setUpBlankDataLabels(labelConstraints, blank, panelSecondary);
             blankButton.setText("Validate");
+            if (blank.getDateValidated()==0){
+                blankButton.setEnabled(true);
+            } else{
+                blankButton.setEnabled(false);
+            }
             blankButton.setBackground(Color.GREEN);
             blankButton.setForeground(Color.BLACK);
             panelSecondary.add(blankButton, buttonConstraints);

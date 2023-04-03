@@ -29,13 +29,16 @@ public class frameAirVia {
         buttonSend.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                buttonSend.removeActionListener(this);
                 sendEmptyBlanks();
-
             }
         });
         buttonLogOut.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                for (ActionListener listener: buttonSend.getActionListeners()){
+                    buttonSend.removeActionListener(listener);
+                }
                 buttonLogOut.removeActionListener(this);
                 new frameLogin(main);
             }

@@ -38,6 +38,9 @@ public class frameOfficeManagerSetDiscount {
             public void actionPerformed(ActionEvent e) {
                 main.removeUserActionListeners();
                 removeRadioListeners();
+                for (ActionListener listener : buttonConfirm.getActionListeners()){
+                    buttonConfirm.removeActionListener(listener);
+                }
                 new frameOfficeManagerCurrentCustomers(main);
             }
         });
@@ -46,7 +49,7 @@ public class frameOfficeManagerSetDiscount {
             public void actionPerformed(ActionEvent e) {
                 applyDiscount();
                 removeRadioListeners();
-
+                buttonConfirm.removeActionListener(this);
                 new frameOfficeManagerCurrentCustomers(main);
             }
         });

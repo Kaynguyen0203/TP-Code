@@ -107,11 +107,19 @@ public class Main {
             JLabel col = new JLabel();
             col.setBorder(BorderFactory.createEmptyBorder(0,5,0,5));
             labelConstraints.gridx = i;
+            String dateIssued = String.valueOf(blank.getDateIssued());
+            String dateValidated = String.valueOf(blank.getDateValidated());
             long blankNumber = (blank.getTicketType()* 100000000L)+blank.getBlankNumber();
+            if (blank.getDateValidated()!=0) {
+                dateValidated = dateValidated.substring(0, 4) + "/" + dateValidated.substring(4, 6) + "/" + dateValidated.substring(6);
+            }
+            if (blank.getDateIssued()!=0) {
+                dateIssued = dateIssued.substring(0, 4)+"/"+dateIssued.substring(4, 6)+"/"+dateIssued.substring(6);
+            }
             switch (i){
                 case 0 -> col.setText(String.valueOf(blankNumber));
-                case 1 -> col.setText(String.valueOf(blank.getDateIssued()));
-                case 2 -> col.setText(String.valueOf(blank.getDateValidated()));
+                case 1 -> col.setText(dateIssued);
+                case 2 -> col.setText(dateValidated);
                 case 3 -> col.setText(String.valueOf(blank.getTicketType()));
                 case 4 -> col.setText(String.valueOf(blank.getDestination()));
                 case 5 -> col.setText(String.valueOf(blank.getOrigin()));

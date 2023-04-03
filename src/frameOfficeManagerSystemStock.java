@@ -52,6 +52,8 @@ public class frameOfficeManagerSystemStock {
             blankButton.setForeground(Color.BLACK);
             if (blank.getSellerUserID()!=0){
                 blankButton.setEnabled(false);
+            } else{
+                blankButton.setEnabled(true);
             }
             panelSecondary.add(blankButton, buttonConstraints);
             if (blankButton.getActionListeners().length ==0){

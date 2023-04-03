@@ -39,6 +39,9 @@ public class frameSystemAdminEditContactDetails {
             @Override
             public void actionPerformed(ActionEvent e) {
                 main.removeUserActionListeners();
+                for (ActionListener listener :buttonConfirm.getActionListeners()) {
+                    buttonConfirm.removeActionListener(listener);
+                }
                 new frameSystemAdminStaffList(main);
             }
         });
@@ -73,6 +76,9 @@ public class frameSystemAdminEditContactDetails {
             user.setRole(role);
             JOptionPane.showMessageDialog(frame, "Staff details have changed", "Success", JOptionPane.INFORMATION_MESSAGE);
             main.removeUserActionListeners();
+            for (ActionListener listener :buttonConfirm.getActionListeners()) {
+                buttonConfirm.removeActionListener(listener);
+            }
             new frameSystemAdminStaffList(main);
         } catch(Exception e){
             e.printStackTrace();

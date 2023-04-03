@@ -20,10 +20,12 @@ frameSystemAdminStaffList (can view all staff details) <br>
 frameSystemAdminEditContactDetails (can edit staff details of choice) <br>
 frameOfficeManagerCurrentCustomers (can see all the current customers and select to configure discounts) <br>
 frameOfficeManagerSetDiscount (can set fixed or flexible discount)
+frameTravelAdvisorEmptyBlanks (travel advisor can see his blanks and validate them if can)
+frameTravelAdvisorValidateBlank (travel advisor can validate the blank)
 
 Air Via frames (1/1) <br>
 Office Manager frames (6/9) <br>
 System Admin frames (4/7) <br>
-Travel Advisor frames (2/6) <br>
+Travel Advisor frames (3/6) <br>
 Customer frames (1/6) <br>
 login, create account (2/2) <br>
