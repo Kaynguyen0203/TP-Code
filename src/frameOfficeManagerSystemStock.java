@@ -64,5 +64,8 @@ public class frameOfficeManagerSystemStock {
                 });
             }
         }
+        labelConstraints.gridy+=1;
+        panelSecondary.add(Box.createVerticalStrut(300), labelConstraints);
+
     }
 }

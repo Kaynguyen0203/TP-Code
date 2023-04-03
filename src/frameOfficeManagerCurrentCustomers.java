@@ -16,6 +16,7 @@ public class frameOfficeManagerCurrentCustomers {
         frame = main.getMain().getMainFrame();
         frame.setContentPane(panelOfficeManagerCurrentCustomers);
         setUpCustomerList();
+
         main.setUpUserTopLabels(panelSecondary);
         frame.pack();
         buttonGoBack.addActionListener(new ActionListener() {
@@ -55,5 +56,7 @@ public class frameOfficeManagerCurrentCustomers {
                 }
             });
         }
+        labelConstraints.gridy+=1;
+        panelSecondary.add(Box.createVerticalStrut(300), labelConstraints);
     }
 }

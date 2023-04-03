@@ -7,7 +7,6 @@ public class frameTravelAdvisor {
     private JFrame frame;
     private JPanel panelTravelAdvisor;
     private JButton buttonCreateTicketsFromBlank;
-    private JButton buttonSellTickets;
     private JButton buttonGenerateViewIndivReports;
     private JButton buttonLogOut;
 
@@ -19,13 +18,8 @@ public class frameTravelAdvisor {
         buttonCreateTicketsFromBlank.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                main.removeBlankActionListeners();
                 new frameTravelAdvisorEmptyBlanks(main);
-            }
-        });
-        buttonSellTickets.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new frameTravelAdvisorCustomers(main);
             }
         });
         buttonGenerateViewIndivReports.addActionListener(new ActionListener() {
@@ -37,6 +31,7 @@ public class frameTravelAdvisor {
         buttonLogOut.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                main.removeBlankActionListeners();
                 new frameLogin(main);
             }
         });

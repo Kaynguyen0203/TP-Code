@@ -32,8 +32,8 @@ public class frameSystemAdminStaffList {
         GridBagConstraints labelConstraints = new GridBagConstraints();
         labelConstraints.anchor = GridBagConstraints.NORTHWEST;
         for (int i=0; i<userArrayList.size(); i++) {
-            buttonConstraints.gridy = i + 1;
-            labelConstraints.gridy = i + 1;
+            buttonConstraints.gridy =i+1;
+            labelConstraints.gridy =i+1;
             User user = userArrayList.get(i);
             JButton userButton = user.getButton();
             main.setUpUserDataLabels(labelConstraints, user, panelSecondary);
@@ -49,5 +49,8 @@ public class frameSystemAdminStaffList {
                 }
             });
         }
+        labelConstraints.gridy+=1;
+        panelSecondary.add(Box.createVerticalStrut(300), labelConstraints);
+
     }
 }

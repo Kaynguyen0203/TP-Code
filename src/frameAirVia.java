@@ -66,7 +66,7 @@ public class frameAirVia {
                     preparedStatement.setInt(4, ticketPrice);
                     preparedStatement.setInt(5, commissionRate);
                     preparedStatement.executeUpdate();
-                    Blank blank = new Blank(highestIDBlank+1, actualDate, 0, ticketType, null, 0, 0, ticketPrice, 0, 0, 0, null, commissionRate);
+                    Blank blank = new Blank(highestIDBlank+1, actualDate, 0, ticketType, null, null, 0, ticketPrice, 0, 0, 0, null, commissionRate);
                     array.add(blank);
                     preparedStatement.close();
                 }

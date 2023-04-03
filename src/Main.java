@@ -90,7 +90,7 @@ public class Main {
                 case 2 -> col.setText("|Date Validated|");
                 case 3 -> col.setText("|Ticket Type|");
                 case 4 -> col.setText("|Destination|");
-                case 5 -> col.setText("|Flight Date|");
+                case 5 -> col.setText("|Origin|");
                 case 6 -> col.setText("|Seat Number|");
                 case 7 -> col.setText("|Ticket Price|");
                 case 8 -> col.setText("|Seller UserID|");
@@ -114,7 +114,7 @@ public class Main {
                 case 2 -> col.setText(String.valueOf(blank.getDateValidated()));
                 case 3 -> col.setText(String.valueOf(blank.getTicketType()));
                 case 4 -> col.setText(String.valueOf(blank.getDestination()));
-                case 5 -> col.setText(String.valueOf(blank.getFlightDate()));
+                case 5 -> col.setText(String.valueOf(blank.getOrigin()));
                 case 6 -> col.setText(String.valueOf(blank.getSeatNumber()));
                 case 7 -> col.setText(String.valueOf(blank.getTicketPrice()));
                 case 8 -> col.setText(String.valueOf(blank.getSellerUserID()));
@@ -151,7 +151,7 @@ public class Main {
                     "in2018g30_a", "AqZonm86");
             PreparedStatement preparedStatement = con.prepareStatement("" +
                     "SELECT blankNumber, dateIssued, dateValidated, ticketType, destination, " +
-                    "flightDate, seatNumber, ticketPrice, sellerUserID, customerUserID, dateSold, cashCard, commissionRate FROM blanks");
+                    "origin, seatNumber, ticketPrice, sellerUserID, customerUserID, dateSold, cashCard, commissionRate FROM blanks");
             ResultSet resultSet = preparedStatement.executeQuery();
             this.blankArrayList = new ArrayList<Blank>();
             while (resultSet.next()){
@@ -160,7 +160,7 @@ public class Main {
                 int dateValidated = resultSet.getInt("dateValidated");
                 int ticketType = resultSet.getInt("ticketType");
                 String destination = resultSet.getString("destination");
-                int flightDate = resultSet.getInt("flightDate");
+                String origin = resultSet.getString("origin");
                 int seatNumber = resultSet.getInt("seatNumber");
                 int ticketPrice = resultSet.getInt("ticketPrice");
                 int sellerUserID = resultSet.getInt("sellerUserID");
@@ -169,7 +169,7 @@ public class Main {
                 String cashCard = resultSet.getString("cashCard");
                 int commissionRate = resultSet.getInt("commissionRate");
                 Blank newBlank = new Blank(blankNumber, dateIssued, dateValidated,ticketType,destination,
-                        flightDate,seatNumber,ticketPrice,sellerUserID,customerUserID,dateSold, cashCard, commissionRate);
+                        origin,seatNumber,ticketPrice,sellerUserID,customerUserID,dateSold, cashCard, commissionRate);
                 blankArrayList.add(newBlank);
             }
             preparedStatement.close();

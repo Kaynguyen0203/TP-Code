@@ -49,8 +49,8 @@ public class frameOfficeManagerAllocateBlank {
         GridBagConstraints labelConstraints = new GridBagConstraints();
         labelConstraints.anchor = GridBagConstraints.NORTHWEST;
         for (int i=0; i<travelAdvisorArrayList.size(); i++) {
-            buttonConstraints.gridy = i + 1;
-            labelConstraints.gridy = i + 1;
+            buttonConstraints.gridy =i+1;
+            labelConstraints.gridy =i+1;
             User user = travelAdvisorArrayList.get(i);
             JButton userButton = user.getButton();
             main.setUpUserDataLabels(labelConstraints, user, panelTertiary);
@@ -68,6 +68,9 @@ public class frameOfficeManagerAllocateBlank {
                 }
             });
         }
+        labelConstraints.gridy+=1;
+        panelTertiary.add(Box.createVerticalStrut(300), labelConstraints);
+
     }
     private void allocateBlank(User user, Blank blank){
         try {

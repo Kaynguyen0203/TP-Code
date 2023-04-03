@@ -34,11 +34,12 @@ public class frameOfficeManagerAllocatedBlanks {
         GridBagConstraints buttonConstraints = main.setBlankButtonConstraints();
         GridBagConstraints labelConstraints = new GridBagConstraints();
         labelConstraints.anchor = GridBagConstraints.NORTHWEST;
+        labelConstraints.gridy = 0;
         for (int i=0; i<blankArrayList.size(); i++){
-            buttonConstraints.gridy = i+1;
-            labelConstraints.gridy = i+1;
             Blank blank = blankArrayList.get(i);
             if (blank.getSellerUserID()!=0){
+                buttonConstraints.gridy =i+1;
+                labelConstraints.gridy = i+1;
                 JButton blankButton = blank.getButton();
                 main.setUpBlankDataLabels(labelConstraints, blank, panelSecondary);
                 blankButton.setText("Reallocate");
@@ -59,6 +60,8 @@ public class frameOfficeManagerAllocatedBlanks {
                 }
             }
         }
+        labelConstraints.gridy+=1;
+        panelSecondary.add(Box.createVerticalStrut(300), labelConstraints);
     }
     private void removeBlankFromTravelAdvisor(Blank blank){
         try {

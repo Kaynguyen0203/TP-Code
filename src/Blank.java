@@ -7,7 +7,7 @@ public class Blank {
     private int dateValidated;
     private int ticketType;
     private String destination;
-    private int flightDate;
+    private String origin;
     private int seatNumber;
     private int ticketPrice;
     private int sellerUserID;
@@ -16,13 +16,13 @@ public class Blank {
     private JButton button;
     private String cashCard;
     private int commissionRate;
-    public Blank(int blankNumber, int dateIssued, int dateValidated, int ticketType, String destination, int flightDate, int seatNumber, int ticketPrice, int sellerUserID, int customerUserID, int dateSold, String cashCard, int commissionRate) {
+    public Blank(int blankNumber, int dateIssued, int dateValidated, int ticketType, String destination, String origin, int seatNumber, int ticketPrice, int sellerUserID, int customerUserID, int dateSold, String cashCard, int commissionRate) {
         this.blankNumber = blankNumber;
         this.dateIssued = dateIssued;
         this.dateValidated = dateValidated;
         this.ticketType = ticketType;
         this.destination = destination;
-        this.flightDate = flightDate;
+        this.origin = origin;
         this.seatNumber = seatNumber;
         this.ticketPrice = ticketPrice;
         this.sellerUserID = sellerUserID;
@@ -37,7 +37,7 @@ public class Blank {
     public int getDateValidated() {return dateValidated;}
     public int getTicketType() {return ticketType;}
     public String getDestination() {return destination;}
-    public int getFlightDate() {return flightDate;}
+    public String getOrigin() {return origin;}
     public int getSeatNumber() {return seatNumber;}
     public int getTicketPrice() {return ticketPrice;}
     public int getSellerUserID() {return sellerUserID;}
@@ -50,7 +50,7 @@ public class Blank {
     public void setDateValidated(int dateValidated) {this.dateValidated = dateValidated;}
     public void setTicketType(int ticketType) {this.ticketType = ticketType;}
     public void setDestination(String destination) {this.destination = destination;}
-    public void setFlightDate(int flightDate) {this.flightDate = flightDate;}
+    public void setOrigin(String origin) {this.origin = origin;}
     public void setSeatNumber(int seatNumber) {this.seatNumber = seatNumber;}
     public void setTicketPrice(int ticketPrice) {this.ticketPrice = ticketPrice;}
     public void setSellerUserID(int sellerUserID) {this.sellerUserID = sellerUserID;}

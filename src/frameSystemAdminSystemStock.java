@@ -17,6 +17,7 @@ public class frameSystemAdminSystemStock {
         frame.setContentPane(panelSystemAdminSystemStock);
         main.setUpBlankTopLabels(panelSecondary);
         setUpLabels();
+
         frame.pack();
         buttonGoBack.addActionListener(new ActionListener() {
             @Override
@@ -34,5 +35,7 @@ public class frameSystemAdminSystemStock {
             Blank blank = blankArrayList.get(i);
             main.setUpBlankDataLabels(labelConstraints, blank, panelSecondary);
         }
+        labelConstraints.gridy+=1;
+        panelSecondary.add(Box.createVerticalStrut(300), labelConstraints);
     }
 }

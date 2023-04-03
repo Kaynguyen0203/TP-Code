@@ -24,6 +24,6 @@ frameOfficeManagerSetDiscount (can set fixed or flexible discount)
 Air Via frames (1/1) <br>
 Office Manager frames (6/9) <br>
 System Admin frames (4/7) <br>
-Travel Advisor frames (1/9) <br>
+Travel Advisor frames (2/6) <br>
 Customer frames (1/6) <br>
 login, create account (2/2) <br>
