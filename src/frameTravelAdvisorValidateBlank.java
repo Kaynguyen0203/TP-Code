@@ -78,6 +78,7 @@ public class frameTravelAdvisorValidateBlank {
             main.removeUserActionListeners();
             new frameTravelAdvisorEmptyBlanks(main);
         }catch(Exception e){
+            new frameTravelAdvisorEmptyBlanks(main);
             JOptionPane.showMessageDialog(frame, "Incorrect field", "Try again", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
