@@ -45,9 +45,10 @@
           <text value="Go Back"/>
         </properties>
       </component>
-      <scrollpane id="9454b">
+      <scrollpane id="9454b" binding="scrollPane">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="1000" height="300"/>
             <maximum-size width="1000" height="300"/>
           </grid>
         </constraints>

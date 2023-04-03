@@ -33,7 +33,7 @@ public class frameOfficeManagerAllocatedBlanks {
         ArrayList<Blank> blankArrayList = main.getBlankArrayList();
         GridBagConstraints buttonConstraints = main.setBlankButtonConstraints();
         GridBagConstraints labelConstraints = new GridBagConstraints();
-        labelConstraints.anchor = GridBagConstraints.WEST;
+        labelConstraints.anchor = GridBagConstraints.NORTHWEST;
         for (int i=0; i<blankArrayList.size(); i++){
             buttonConstraints.gridy = i+1;
             labelConstraints.gridy = i+1;

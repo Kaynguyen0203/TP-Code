@@ -14,7 +14,9 @@ public class Blank {
     private int customerUserID;
     private int dateSold;
     private JButton button;
-    public Blank(int blankNumber, int dateIssued, int dateValidated, int ticketType, String destination, int flightDate, int seatNumber, int ticketPrice, int sellerUserID, int customerUserID, int dateSold) {
+    private String cashCard;
+    private int commissionRate;
+    public Blank(int blankNumber, int dateIssued, int dateValidated, int ticketType, String destination, int flightDate, int seatNumber, int ticketPrice, int sellerUserID, int customerUserID, int dateSold, String cashCard, int commissionRate) {
         this.blankNumber = blankNumber;
         this.dateIssued = dateIssued;
         this.dateValidated = dateValidated;
@@ -26,6 +28,8 @@ public class Blank {
         this.sellerUserID = sellerUserID;
         this.customerUserID = customerUserID;
         this.dateSold = dateSold;
+        this.cashCard = cashCard;
+        this.commissionRate = commissionRate;
         this.button = new JButton();
     }
     public int getBlankNumber() {return blankNumber;}
@@ -40,6 +44,8 @@ public class Blank {
     public int getCustomerUserID() {return customerUserID;}
     public int getDateSold() {return dateSold;}
     public JButton getButton() {return button;}
+    public String getCashCard() {return cashCard;}
+    public int getCommissionRate() {return commissionRate;}
     public void setDateIssued(int dateIssued) {this.dateIssued = dateIssued;}
     public void setDateValidated(int dateValidated) {this.dateValidated = dateValidated;}
     public void setTicketType(int ticketType) {this.ticketType = ticketType;}
@@ -51,4 +57,6 @@ public class Blank {
     public void setCustomerUserID(int customerUserID) {this.customerUserID = customerUserID;}
     public void setDateSold(int dateSold) {this.dateSold = dateSold;}
     public void setButton(JButton button) {this.button = button;}
+    public void setCashCard(String cashCard) {this.cashCard = cashCard;}
+    public void setCommissionRate(int commissionRate) {this.commissionRate = commissionRate;}
 }

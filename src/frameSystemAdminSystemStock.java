@@ -28,7 +28,7 @@ public class frameSystemAdminSystemStock {
     private void setUpLabels(){
         ArrayList<Blank> blankArrayList = main.getBlankArrayList();
         GridBagConstraints labelConstraints = new GridBagConstraints();
-        labelConstraints.anchor = GridBagConstraints.WEST;
+        labelConstraints.anchor = GridBagConstraints.NORTHWEST;
         for (int i=0; i<blankArrayList.size(); i++){
             labelConstraints.gridy = i+1;
             Blank blank = blankArrayList.get(i);
