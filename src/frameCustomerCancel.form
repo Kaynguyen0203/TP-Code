@@ -48,7 +48,7 @@
           <text value="Go Back"/>
         </properties>
       </component>
-      <scrollpane id="93af0" binding="panelSecondary">
+      <scrollpane id="93af0">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="1000" height="70"/>
@@ -60,7 +60,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <grid id="465bb" layout-manager="GridBagLayout">
+          <grid id="465bb" binding="panelSecondary" layout-manager="GridBagLayout">
             <constraints/>
             <properties>
               <background color="-1"/>

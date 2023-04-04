@@ -50,7 +50,7 @@ public class frameAirVia {
             int ticketType = Integer.parseInt(fieldTicketType.getText());
             int ticketPrice = Integer.parseInt(fieldTicketPrice.getText());
             int commissionRate = Integer.parseInt(fieldCommissionRate.getText());
-            if (blankAmount>0 && blankAmount <11 && Arrays.asList(444, 440, 420, 201, 101).contains(ticketType) && ticketPrice>0 && commissionRate>0 && commissionRate<101){
+            if (blankAmount>0 && blankAmount <11 && Arrays.asList(444, 440, 420, 201, 101, 451, 452).contains(ticketType) && ticketPrice>0 && commissionRate>0 && commissionRate<101){
                 ArrayList<Blank> array = main.getBlankArrayList();
                 LocalDate currentDate = LocalDate.now();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");

@@ -73,7 +73,7 @@
         <properties>
           <background color="-1"/>
           <foreground color="-16777216"/>
-          <text value="Ticket Type (444, 440, 420, 201 or 101)"/>
+          <text value="Ticket Type (444, 440, 420, 201, 101, 451, 452)"/>
         </properties>
       </component>
       <component id="46aa4" class="javax.swing.JTextField" binding="fieldTicketType">

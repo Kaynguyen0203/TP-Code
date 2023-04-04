@@ -26,10 +26,11 @@ in order of completion: <br>
 - frameCustomerCash (pay with cash)
 - frameCustomerCard (pay with card, input card number)
 - frameCustomerTickets (view current tickets user has purchased)
+- frameCustomerCancel (user can cancel and get a refund, a log is taken in a file)
 
 Air Via frames (1/1) <br>
 Office Manager frames (6/9) <br>
 System Admin frames (4/7) <br>
 Travel Advisor frames (3/6) <br>
-Customer frames (5/6) <br>
+Customer frames (6/6) <br>
 login, create account (2/2) <br>

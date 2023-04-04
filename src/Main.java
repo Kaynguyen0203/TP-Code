@@ -124,12 +124,12 @@ public class Main {
                 case 4 -> col.setText(String.valueOf(blank.getDestination()));
                 case 5 -> col.setText(String.valueOf(blank.getOrigin()));
                 case 6 -> col.setText(String.valueOf(blank.getSeatNumber()));
-                case 7 -> col.setText(String.valueOf(blank.getTicketPrice()));
+                case 7 -> col.setText("$"+ blank.getTicketPrice());
                 case 8 -> col.setText(String.valueOf(blank.getSellerUserID()));
                 case 9 -> col.setText(String.valueOf(blank.getCustomerUserID()));
                 case 10 -> col.setText(String.valueOf(blank.getDateSold()));
                 case 11 -> col.setText(String.valueOf(blank.getCashCard()));
-                case 12 -> col.setText(String.valueOf(blank.getCommissionRate()));
+                case 12 -> col.setText(blank.getCommissionRate()+"%");
             }
             panelSecondary.add(col, labelConstraints);
         }
