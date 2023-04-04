@@ -5,26 +5,37 @@ import java.awt.event.ActionListener;
 public class frameTravelAdvisorGenerateReport {
     private Main main;
     private JFrame frame;
-    private JPanel panelTravelAdvisorGenerateReport;
-    private JButton buttonConfirm;
-    private JButton buttonGoBack;
-    private JScrollBar scrollBar1;
+    private JPanel panelTravelAdvisorIndivReports;
+    private JButton generateNewReportButton;
+    private JButton goBackButton;
+    private JTextField fieldDate;
 
     public frameTravelAdvisorGenerateReport(Main main) {
         this.main = main;
         frame = main.getMain().getMainFrame();
-        frame.setContentPane(panelTravelAdvisorGenerateReport);
+        frame.setContentPane(panelTravelAdvisorIndivReports);
         frame.pack();
-        buttonConfirm.addActionListener(new ActionListener() {
+        generateNewReportButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try{
+                    int date = Integer.parseInt(fieldDate.getText());
+                    System.out.println("WW");
+                    new frameTravelAdvisorReportDetails(main, date);
+                    generateNewReportButton.removeActionListener(this);
+                }catch(Exception a){
 
+                    a.printStackTrace();
+                }
             }
         });
-        buttonGoBack.addActionListener(new ActionListener() {
+        goBackButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new frameTravelAdvisorIndividualReports(main);
+                for(ActionListener listener:generateNewReportButton.getActionListeners()){
+                    generateNewReportButton.removeActionListener(this);
+                }
+                new frameTravelAdvisor(main);
             }
         });
     }

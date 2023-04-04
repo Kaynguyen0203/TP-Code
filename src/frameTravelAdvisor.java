@@ -25,7 +25,7 @@ public class frameTravelAdvisor {
         buttonGenerateViewIndivReports.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new frameTravelAdvisorIndividualReports(main);
+                new frameTravelAdvisorGenerateReport(main);
             }
         });
         buttonLogOut.addActionListener(new ActionListener() {

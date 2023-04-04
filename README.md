@@ -27,10 +27,12 @@ in order of completion: <br>
 - frameCustomerCard (pay with card, input card number)
 - frameCustomerTickets (view current tickets user has purchased)
 - frameCustomerCancel (user can cancel and get a refund, a log is taken in a file)
+- frameTravelAdvisorGenerateReport (user can generate a report based on a day)
+- frameTravelAdvisorReportDetails (user can see the domestic and interline reports separately)
 
 Air Via frames (1/1) <br>
 Office Manager frames (6/9) <br>
 System Admin frames (4/7) <br>
-Travel Advisor frames (3/6) <br>
+Travel Advisor frames (5/5) <br>
 Customer frames (6/6) <br>
 login, create account (2/2) <br>
