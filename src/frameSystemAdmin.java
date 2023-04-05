@@ -10,6 +10,7 @@ public class frameSystemAdmin {
     private JButton buttonBackUpAndRestore;
     private JButton buttonAccessSystemStock;
     private JButton buttonTravelAgentContactDetails;
+    private JButton receiveBlanksFromAirViaButton;
 
 
     public frameSystemAdmin(Main main) {
@@ -39,6 +40,12 @@ public class frameSystemAdmin {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new frameLogin(main);
+            }
+        });
+        receiveBlanksFromAirViaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new frameSystemAdminReceiveBlanks(main);
             }
         });
     }

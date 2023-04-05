@@ -120,7 +120,6 @@
             <item value="Travel Advisor"/>
             <item value="System Admin"/>
             <item value="Office Manager"/>
-            <item value="AirVia Staff"/>
           </model>
         </properties>
       </component>

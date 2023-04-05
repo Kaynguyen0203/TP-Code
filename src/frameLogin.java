@@ -71,7 +71,6 @@ public class frameLogin {
                         case "Office Manager" -> new frameOfficeManager(main);
                         case "Travel Advisor" -> new frameTravelAdvisor(main);
                         case "System Admin" -> new frameSystemAdmin(main);
-                        case "AirVia Staff" -> new frameAirVia(main);
                 }
             } else{
                 JOptionPane.showMessageDialog(frame, "Invalid", "Try again", JOptionPane.ERROR_MESSAGE);

@@ -1,27 +1,24 @@
-import com.mysql.cj.jdbc.BlobFromLocator;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class frameAirVia {
+public class frameSystemAdminReceiveBlanks {
     private final Main main;
     private final JFrame frame;
     private JPanel panelAirVia;
     private JTextField fieldBlankAmount;
     private JButton buttonSend;
-    private JButton buttonLogOut;
+    private JButton buttonGoBack;
     private JTextField fieldTicketType;
     private JTextField fieldTicketPrice;
     private JTextField fieldCommissionRate;
 
-    public frameAirVia(Main main) {
+    public frameSystemAdminReceiveBlanks(Main main) {
         this.main = main;
         frame = main.getMain().getMainFrame();
         frame.setContentPane(panelAirVia);
@@ -33,14 +30,14 @@ public class frameAirVia {
                 sendEmptyBlanks();
             }
         });
-        buttonLogOut.addActionListener(new ActionListener() {
+        buttonGoBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (ActionListener listener: buttonSend.getActionListeners()){
                     buttonSend.removeActionListener(listener);
                 }
-                buttonLogOut.removeActionListener(this);
-                new frameLogin(main);
+                buttonGoBack.removeActionListener(this);
+                new frameSystemAdmin(main);
             }
         });
     }

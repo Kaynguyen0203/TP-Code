@@ -151,7 +151,6 @@
             <item value="Office Manager"/>
             <item value="Travel Advisor"/>
             <item value="System Admin"/>
-            <item value="AirVia Staff"/>
           </model>
         </properties>
       </component>

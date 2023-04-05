@@ -10,7 +10,7 @@ in order of completion: <br>
 - frameTravelAdvisor <br>
 - frameCreateAccount (account creation)<br>
 - frameLogin (login) <br> 
-- frameAirVia (generate empty blanks in database) <br>
+- frameSystemAdminReceiveBlanks (generate empty blanks in database) <br>
 - frameOfficeManagerSystemStock (view all blanks, can allocate blanks to travel advisors)<br>
 - frameOfficeManagerAllocateBlank (pick which travel advisor to allocate the blank to)<br>
 - frameOfficeManagerAllocatedBlanks (pick which blanks to remove ownership from, given that the corresponding travel advisor didn't do anything with it) <br>
@@ -34,9 +34,8 @@ in order of completion: <br>
 - frameOfficeManagerATSReport (user can choose a date to generate an ATS report)
 - frameOfficeManagerATSReportView (user can see the details of the ATS report)
 
-Air Via frames (1/1) <br>
 Office Manager frames (10/10) <br>
-System Admin frames (4/7) <br>
+System Admin frames (5/8) <br>
 Travel Advisor frames (5/5) <br>
 Customer frames (6/6) <br>
 login, create account (2/2) <br>
