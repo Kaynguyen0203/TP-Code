@@ -35,7 +35,7 @@ in order of completion: <br>
 - frameOfficeManagerATSReportView (user can see the details of the ATS report)
 
 Air Via frames (1/1) <br>
-Office Manager frames (6/9) <br>
+Office Manager frames (10/10) <br>
 System Admin frames (4/7) <br>
 Travel Advisor frames (5/5) <br>
 Customer frames (6/6) <br>
