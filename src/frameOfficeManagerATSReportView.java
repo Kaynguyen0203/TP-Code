@@ -4,53 +4,59 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
-public class frameTravelAdvisorReportDetails {
+public class frameOfficeManagerATSReportView {
     private Main main;
     private JFrame frame;
-    private JPanel panelTravelAdvisorGenerateReport;
-    private JButton buttonConfirm;
+    private int date;
+    private JPanel panelOfficeManagerATSReportView;
     private JButton buttonGoBack;
     private JPanel panelSecondary;
     private JPanel panelTertiary;
     private JLabel text1;
     private JLabel text2;
-    private int date;
-    public frameTravelAdvisorReportDetails(Main main, int date) {
+
+    public frameOfficeManagerATSReportView(Main main, int date){
         this.main = main;
         this.date = date;
-        frame = main.getMain().getMainFrame();
-        frame.setContentPane(panelTravelAdvisorGenerateReport);
+        this.frame = main.getMainFrame();
+        frame.setContentPane(panelOfficeManagerATSReportView);
         main.setUpBlankTopLabels(panelSecondary);
         main.setUpBlankTopLabels(panelTertiary);
-        text1.setText(main.getUser().getName()+"'s Interlines Sales");
-        text2.setText(main.getUser().getName()+"'s Domestic Sales");
+        String actualDate = String.valueOf(date);
+        String year = actualDate.substring(0,4);
+        String month = actualDate.substring(4,6);
+        String day = actualDate.substring(6,8);
+        text1.setText("All Travel Advisor Interlines Sales on "+year+"/"+month+"/"+day);
+        text2.setText("All Travel Advisor Domestic Sales on "+year+"/"+month+"/"+day);
         seeReport();
         frame.pack();
         buttonGoBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new frameTravelAdvisorGenerateReport(main);
+                new frameOfficeManagerATSReport(main);
             }
         });
     }
     private void seeReport(){
         ArrayList<Blank> blankArrayList = main.getBlankArrayList();
+        ArrayList<User> userArrayList = main.getUserArrayList();
         ArrayList<Blank> interlineList = new ArrayList<Blank>();
         ArrayList<Blank> domesticList = new ArrayList<Blank>();
-        User user = main.getUser();
-        setUpReportList(blankArrayList, interlineList, domesticList, user, date, main, panelSecondary, panelTertiary);
-    }
-
-    static void setUpReportList(ArrayList<Blank> blankArrayList, ArrayList<Blank> interlineList, ArrayList<Blank> domesticList, User user, int date, Main main, JPanel panelSecondary, JPanel panelTertiary) {
-        for (Blank blank :blankArrayList){
-            if(Arrays.asList(444, 440, 420, 451, 452).contains(blank.getTicketType()) && user.getUserID() ==
-                    blank.getSellerUserID() && date == blank.getDateSold()){
-                interlineList.add(blank);
-            }
-            if(Arrays.asList(201, 101).contains(blank.getTicketType()) && user.getUserID() == blank.getSellerUserID() &&
-                    date == blank.getDateSold()){
-                domesticList.add(blank);
+        for (User user : userArrayList){
+            if (user.getRole().equals("Travel Advisor")){
+                for (Blank blank :blankArrayList){
+                    if(Arrays.asList(444, 440, 420, 451, 452).contains(blank.getTicketType()) && user.getUserID() ==
+                            blank.getSellerUserID() && date == blank.getDateSold()){
+                        interlineList.add(blank);
+                    }
+                    if(Arrays.asList(201, 101).contains(blank.getTicketType()) && user.getUserID() == blank.getSellerUserID() &&
+                            date == blank.getDateSold()){
+                        domesticList.add(blank);
+                    }
+                }
             }
         }
         GridBagConstraints labelConstraints = new GridBagConstraints();

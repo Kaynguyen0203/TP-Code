@@ -29,6 +29,10 @@ in order of completion: <br>
 - frameCustomerCancel (user can cancel and get a refund, a log is taken in a file)
 - frameTravelAdvisorGenerateReport (user can generate a report based on a day)
 - frameTravelAdvisorReportDetails (user can see the domestic and interline reports separately)
+- frameOfficeManagerTravelAdvisors (user can choose a date to generate indiv report for any travel advisor)
+- frameOfficeManagerIndividualReport (user can see the domestic and interline reports separately)
+- frameOfficeManagerATSReport (user can choose a date to generate an ATS report)
+- frameOfficeManagerATSReportView (user can see the details of the ATS report)
 
 Air Via frames (1/1) <br>
 Office Manager frames (6/9) <br>

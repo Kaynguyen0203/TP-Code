@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="frameOfficeManagerIndividualReport">
+  <grid id="27dc6" binding="panelOfficeManagerIndividualReports" layout-manager="GridLayoutManager" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="10" left="50" bottom="10" right="50"/>
+    <constraints>
+      <xy x="20" y="20" width="534" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-1"/>
+      <font/>
+      <foreground color="-16777216"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="b6ac8" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="400" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <font name="Arial" size="48" style="1"/>
+          <foreground color="-16777216"/>
+          <horizontalAlignment value="0"/>
+          <text value="Individual Report"/>
+        </properties>
+      </component>
+      <component id="2db25" class="javax.swing.JButton" binding="buttonGoBack">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1294535"/>
+          <font/>
+          <foreground color="-16777216"/>
+          <text value="Go Back"/>
+        </properties>
+      </component>
+      <scrollpane id="df665">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="1000" height="300"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <foreground color="-16777216"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="12e0" binding="panelSecondary" layout-manager="GridBagLayout">
+            <constraints/>
+            <properties>
+              <background color="-1"/>
+              <font/>
+              <foreground color="-16777216"/>
+            </properties>
+            <border type="line"/>
+            <children/>
+          </grid>
+        </children>
+      </scrollpane>
+      <scrollpane id="4897">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="1000" height="300"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <foreground color="-16777216"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="a81fa" binding="panelTertiary" layout-manager="GridBagLayout">
+            <constraints/>
+            <properties>
+              <background color="-1"/>
+              <foreground color="-16777216"/>
+            </properties>
+            <border type="line"/>
+            <children/>
+          </grid>
+        </children>
+      </scrollpane>
+      <component id="5eb8a" class="javax.swing.JLabel" binding="text1">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <foreground color="-16777216"/>
+          <text value="Label"/>
+        </properties>
+      </component>
+      <component id="32830" class="javax.swing.JLabel" binding="text2">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <foreground color="-16777216"/>
+          <text value="Label"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

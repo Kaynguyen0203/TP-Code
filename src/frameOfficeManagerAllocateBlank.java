@@ -70,7 +70,6 @@ public class frameOfficeManagerAllocateBlank {
         }
         labelConstraints.gridy+=1;
         panelTertiary.add(Box.createVerticalStrut(300), labelConstraints);
-
     }
     private void allocateBlank(User user, Blank blank){
         try {
