@@ -6,7 +6,7 @@ import java.sql.*;
 public class frameLogin {
     private final Main main;
     private final JFrame frame;
-    private JTextField fieldEmail;
+    private JTextField fieldName;
     private JPasswordField fieldPassword;
     private JButton buttonEnter;
     private JButton buttonCreateAccount;
@@ -43,8 +43,8 @@ public class frameLogin {
             Connection con = DriverManager.getConnection("jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2018g30",
                     "in2018g30_a", "AqZonm86");
             PreparedStatement statement = con.prepareStatement(
-                    "SELECT UserID, name, password, email, address, role FROM users WHERE email = ? AND password = ?");
-            statement.setString(1, fieldEmail.getText());
+                    "SELECT UserID, name, password, email, address, role FROM users WHERE name = ? AND password = ?");
+            statement.setString(1, fieldName.getText());
             statement.setString(2, String.valueOf(fieldPassword.getPassword()));
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){
