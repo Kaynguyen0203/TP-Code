@@ -19,6 +19,7 @@ public class frameOfficeManagerSetDiscount {
     private JButton buttonGoBack;
     private JPanel panelSecondary;
     private JPanel panelTertiary;
+    private JTextField fieldDiscountLimit;
     private User user;
 
     public frameOfficeManagerSetDiscount(Main main, User user) {
@@ -81,14 +82,18 @@ public class frameOfficeManagerSetDiscount {
                 PreparedStatement preparedStatement = con.prepareStatement("UPDATE usersCustomers SET discountPercent =?" +
                         " WHERE userID = ?");
                 int numberOfSalesPer = Integer.parseInt(fieldDiscountP.getText());
-                int numberOfSales=0;
+                int saleAmount=0;
                 ArrayList<Blank> array = main.getBlankArrayList();
                 for (Blank blank : array){
                     if (blank.getCustomerUserID() == user.getUserID()){
-                        numberOfSales++;
+                        saleAmount = saleAmount + blank.getTicketPrice();
                     }
                 }
-                discount = numberOfSales/numberOfSalesPer;
+                int discountLimit = Integer.parseInt(fieldDiscountLimit.getText());
+                discount = saleAmount/numberOfSalesPer;
+                if (discount>discountLimit){
+                    discount = discountLimit;
+                }
                 preparedStatement.setInt(1, discount);
                 preparedStatement.setInt(2, user.getUserID());
                 preparedStatement.executeUpdate();
@@ -107,17 +112,20 @@ public class frameOfficeManagerSetDiscount {
         buttonGroup.add(radioButtonFixed);
         buttonGroup.add(radioButtonFlex);
         fieldDiscountP.setEnabled(false);
+        fieldDiscountLimit.setEnabled(false);
         radioButtonFixed.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 fieldDiscount.setEnabled(true);
                 fieldDiscountP.setEnabled(false);
+                fieldDiscountLimit.setEnabled(false);
             }
         });
         radioButtonFlex.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 fieldDiscountP.setEnabled(true);
+                fieldDiscountLimit.setEnabled(true);
                 fieldDiscount.setEnabled(false);
             }
         });

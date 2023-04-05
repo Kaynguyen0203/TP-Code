@@ -46,25 +46,31 @@ public class frameCustomerCash {
     }
     private void paymentConfirm(){
         try {
+            User user = main.getUser();
+            double discountPercentage = user.getDiscount() / 100.0;
+            double actualTicketPrice = blank.getTicketPrice() * (1 - discountPercentage);
+            int discountedPrice = (int) actualTicketPrice;
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2018g30",
                     "in2018g30_a", "AqZonm86");
-            PreparedStatement preparedStatement = con.prepareStatement("UPDATE blanks SET customerUserID = ?, dateSold=?, cashCard=?" +
+            PreparedStatement preparedStatement = con.prepareStatement("UPDATE blanks SET customerUserID = ?, dateSold=?, cashCard=?, discountedTicketPrice" +
                     " WHERE blankNumber = ? AND ticketType =?");
             LocalDate currentDate = LocalDate.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
             String formattedDate = currentDate.format(formatter);
             int actualDate = Integer.parseInt(formattedDate);
-            preparedStatement.setInt(1, main.getUser().getUserID());
+            preparedStatement.setInt(1, user.getUserID());
             preparedStatement.setInt(2, actualDate);
             preparedStatement.setString(3, "Cash");
-            preparedStatement.setInt(4,blank.getBlankNumber());
-            preparedStatement.setInt(5, blank.getTicketType());
+            preparedStatement.setInt(4, discountedPrice);
+            preparedStatement.setInt(5,blank.getBlankNumber());
+            preparedStatement.setInt(6, blank.getTicketType());
             preparedStatement.executeUpdate();
             preparedStatement.close();
-            blank.setCustomerUserID(main.getUser().getUserID());
+            blank.setCustomerUserID(user.getUserID());
             blank.setDateSold(actualDate);
             blank.setCashCard("Cash");
+            blank.setDiscountedTicketPrice(discountedPrice);
             JOptionPane.showMessageDialog(frame, "Purchased Ticket", "Success", JOptionPane.INFORMATION_MESSAGE);
             con.close();
         } catch(Exception e){

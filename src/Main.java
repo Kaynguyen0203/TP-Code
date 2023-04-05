@@ -80,7 +80,7 @@ public class Main {
         GridBagConstraints labelConstraints = new GridBagConstraints();
         labelConstraints.anchor = GridBagConstraints.NORTHWEST;
         labelConstraints.gridy = 0;
-        for (int i=0; i<13; i++){
+        for (int i=0; i<14; i++){
             JLabel col = new JLabel();
             col.setBorder(BorderFactory.createEmptyBorder(0,5,0,5));
             labelConstraints.gridx = i;
@@ -93,17 +93,18 @@ public class Main {
                 case 5 -> col.setText("|Origin|");
                 case 6 -> col.setText("|Seat Number|");
                 case 7 -> col.setText("|Ticket Price|");
-                case 8 -> col.setText("|Seller UserID|");
-                case 9 -> col.setText("|Customer UserID|");
-                case 10 -> col.setText("|Date Sold|");
-                case 11 -> col.setText("|Cash/Card|");
-                case 12 -> col.setText("|Commission Rate|");
+                case 8 -> col.setText("|Discounted Ticket Price");
+                case 9 -> col.setText("|Seller UserID|");
+                case 10 -> col.setText("|Customer UserID|");
+                case 11 -> col.setText("|Date Sold|");
+                case 12 -> col.setText("|Cash/Card|");
+                case 13 -> col.setText("|Commission Rate|");
             }
             panelSecondary.add(col, labelConstraints);
         }
     }
     public void setUpBlankDataLabels(GridBagConstraints labelConstraints, Blank blank, JPanel panelSecondary) {
-        for (int i=0; i<13; i++) {
+        for (int i=0; i<14; i++) {
             JLabel col = new JLabel();
             col.setBorder(BorderFactory.createEmptyBorder(0,5,0,5));
             labelConstraints.gridx = i;
@@ -125,11 +126,12 @@ public class Main {
                 case 5 -> col.setText(String.valueOf(blank.getOrigin()));
                 case 6 -> col.setText(String.valueOf(blank.getSeatNumber()));
                 case 7 -> col.setText("$"+ blank.getTicketPrice());
-                case 8 -> col.setText(String.valueOf(blank.getSellerUserID()));
-                case 9 -> col.setText(String.valueOf(blank.getCustomerUserID()));
-                case 10 -> col.setText(String.valueOf(blank.getDateSold()));
-                case 11 -> col.setText(String.valueOf(blank.getCashCard()));
-                case 12 -> col.setText(blank.getCommissionRate()+"%");
+                case 8 -> col.setText("$"+ blank.getDiscountedTicketPrice());
+                case 9 -> col.setText(String.valueOf(blank.getSellerUserID()));
+                case 10 -> col.setText(String.valueOf(blank.getCustomerUserID()));
+                case 11 -> col.setText(String.valueOf(blank.getDateSold()));
+                case 12 -> col.setText(String.valueOf(blank.getCashCard()));
+                case 13 -> col.setText(blank.getCommissionRate()+"%");
             }
             panelSecondary.add(col, labelConstraints);
         }
@@ -159,7 +161,7 @@ public class Main {
                     "in2018g30_a", "AqZonm86");
             PreparedStatement preparedStatement = con.prepareStatement("" +
                     "SELECT blankNumber, dateIssued, dateValidated, ticketType, destination, " +
-                    "origin, seatNumber, ticketPrice, sellerUserID, customerUserID, dateSold, cashCard, commissionRate FROM blanks");
+                    "origin, seatNumber, ticketPrice, discountedTicketPrice, sellerUserID, customerUserID, dateSold, cashCard, commissionRate FROM blanks");
             ResultSet resultSet = preparedStatement.executeQuery();
             this.blankArrayList = new ArrayList<Blank>();
             while (resultSet.next()){
@@ -171,13 +173,14 @@ public class Main {
                 String origin = resultSet.getString("origin");
                 int seatNumber = resultSet.getInt("seatNumber");
                 int ticketPrice = resultSet.getInt("ticketPrice");
+                int discountedTicketPrice = resultSet.getInt("discountedTicketPrice");
                 int sellerUserID = resultSet.getInt("sellerUserID");
                 int customerUserID = resultSet.getInt("customerUserID");
                 int dateSold = resultSet.getInt("dateSold");
                 String cashCard = resultSet.getString("cashCard");
                 int commissionRate = resultSet.getInt("commissionRate");
                 Blank newBlank = new Blank(blankNumber, dateIssued, dateValidated,ticketType,destination,
-                        origin,seatNumber,ticketPrice,sellerUserID,customerUserID,dateSold, cashCard, commissionRate);
+                        origin,seatNumber,ticketPrice, discountedTicketPrice,sellerUserID,customerUserID,dateSold, cashCard, commissionRate);
                 blankArrayList.add(newBlank);
             }
             preparedStatement.close();
