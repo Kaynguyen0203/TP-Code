@@ -52,10 +52,12 @@ public class frameCustomerCard {
             double actualTicketPrice = blank.getTicketPrice() * (1 - discountPercentage);
             int discountedPrice = (int) actualTicketPrice;
             String cardNumber = fieldCardNumber.getText();
+            double actualTicketPriceLocal = blank.getTicketPriceLocal() * (1 - discountPercentage);
+            int discountedPriceLocal = (int) actualTicketPriceLocal;
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2018g30",
                     "in2018g30_a", "AqZonm86");
-            PreparedStatement preparedStatement = con.prepareStatement("UPDATE blanks SET customerUserID = ?, dateSold=?, cashCard=?, discountedTicketPrice" +
+            PreparedStatement preparedStatement = con.prepareStatement("UPDATE blanks SET customerUserID = ?, dateSold=?, cashCard=?, discountedTicketPrice=?, discountedTicketPriceLocal=?" +
                     " WHERE blankNumber = ? AND ticketType =?");
             LocalDate currentDate = LocalDate.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
@@ -65,14 +67,16 @@ public class frameCustomerCard {
             preparedStatement.setInt(2, actualDate);
             preparedStatement.setString(3, cardNumber);
             preparedStatement.setInt(4, discountedPrice);
-            preparedStatement.setInt(5,blank.getBlankNumber());
-            preparedStatement.setInt(6, blank.getTicketType());
+            preparedStatement.setInt(5, discountedPriceLocal);
+            preparedStatement.setInt(6, blank.getBlankNumber());
+            preparedStatement.setInt(7, blank.getTicketType());
             preparedStatement.executeUpdate();
             preparedStatement.close();
             blank.setCustomerUserID(user.getUserID());
             blank.setDateSold(actualDate);
             blank.setCashCard(cardNumber);
             blank.setDiscountedTicketPrice(discountedPrice);
+            blank.setDiscountedTicketPriceLocal(discountedPriceLocal);
             JOptionPane.showMessageDialog(frame, "Purchased Ticket", "Success", JOptionPane.INFORMATION_MESSAGE);
             con.close();
         } catch(Exception e){

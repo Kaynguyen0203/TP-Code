@@ -11,13 +11,17 @@ public class Blank {
     private int seatNumber;
     private int ticketPrice;
     private int discountedTicketPrice;
+    private int ticketPriceLocal;
+    private int discountedTicketPriceLocal;
     private int sellerUserID;
     private int customerUserID;
     private int dateSold;
     private JButton button;
     private String cashCard;
     private int commissionRate;
-    public Blank(int blankNumber, int dateIssued, int dateValidated, int ticketType, String destination, String origin, int seatNumber, int ticketPrice, int discountedTicketPrice, int sellerUserID, int customerUserID, int dateSold, String cashCard, int commissionRate) {
+    public Blank(int blankNumber, int dateIssued, int dateValidated, int ticketType, String destination, String origin,
+                 int seatNumber, int ticketPrice, int discountedTicketPrice, int ticketPriceLocal, int discountedTicketPriceLocal,
+                 int sellerUserID, int customerUserID, int dateSold, String cashCard, int commissionRate) {
         this.blankNumber = blankNumber;
         this.dateIssued = dateIssued;
         this.dateValidated = dateValidated;
@@ -26,7 +30,9 @@ public class Blank {
         this.origin = origin;
         this.seatNumber = seatNumber;
         this.ticketPrice = ticketPrice;
-        this.discountedTicketPrice = ticketPrice;
+        this.discountedTicketPrice = discountedTicketPrice;
+        this.ticketPriceLocal = ticketPriceLocal;
+        this.discountedTicketPriceLocal = discountedTicketPriceLocal;
         this.sellerUserID = sellerUserID;
         this.customerUserID = customerUserID;
         this.dateSold = dateSold;
@@ -43,6 +49,8 @@ public class Blank {
     public int getSeatNumber() {return seatNumber;}
     public int getTicketPrice() {return ticketPrice;}
     public int getDiscountedTicketPrice() {return discountedTicketPrice;}
+    public int getTicketPriceLocal() {return ticketPriceLocal;}
+    public int getDiscountedTicketPriceLocal() {return discountedTicketPriceLocal;}
     public int getSellerUserID() {return sellerUserID;}
     public int getCustomerUserID() {return customerUserID;}
     public int getDateSold() {return dateSold;}
@@ -57,6 +65,8 @@ public class Blank {
     public void setSeatNumber(int seatNumber) {this.seatNumber = seatNumber;}
     public void setTicketPrice(int ticketPrice) {this.ticketPrice = ticketPrice;}
     public void setDiscountedTicketPrice(int discountedTicketPrice) {this.discountedTicketPrice = discountedTicketPrice;}
+    public void setTicketPriceLocal(int ticketPriceLocal) {this.ticketPriceLocal = ticketPriceLocal;}
+    public void setDiscountedTicketPriceLocal(int discountedTicketPriceLocal) {this.discountedTicketPriceLocal = discountedTicketPriceLocal;}
     public void setSellerUserID(int sellerUserID) {this.sellerUserID = sellerUserID;}
     public void setCustomerUserID(int customerUserID) {this.customerUserID = customerUserID;}
     public void setDateSold(int dateSold) {this.dateSold = dateSold;}

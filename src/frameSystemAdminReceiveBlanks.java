@@ -18,6 +18,7 @@ public class frameSystemAdminReceiveBlanks {
     private JTextField fieldTicketPrice;
     private JTextField fieldCommissionRate;
     private JTextField fieldDate;
+    private JTextField fieldLocalCurrencyRate;
 
     public frameSystemAdminReceiveBlanks(Main main) {
         this.main = main;
@@ -47,28 +48,31 @@ public class frameSystemAdminReceiveBlanks {
             int blankAmount = Integer.parseInt(fieldBlankAmount.getText());
             int ticketType = Integer.parseInt(fieldTicketType.getText());
             int ticketPrice = Integer.parseInt(fieldTicketPrice.getText());
+            long localCurrencyRate = Long.parseLong(fieldLocalCurrencyRate.getText());
             int commissionRate = Integer.parseInt(fieldCommissionRate.getText());
             int dateIssued = Integer.parseInt(fieldDate.getText());
+            long actualLocalCurrency = (long)ticketPrice*localCurrencyRate;
+            int actualLocalCurrencyInt = (int)actualLocalCurrency;
             if (blankAmount>0 && blankAmount <11 && Arrays.asList(444, 440, 420, 201, 101, 451, 452).contains(ticketType) && ticketPrice>0 && commissionRate>0 && commissionRate<101){
                 ArrayList<Blank> array = main.getBlankArrayList();
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2018g30",
                         "in2018g30_a", "AqZonm86");
                 for (int i=0 ; i<blankAmount; i++){
-                    PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO blanks (blankNumber, dateIssued, ticketType, ticketPrice, commissionRate) " + "VALUES (?,?,?,?,?)");
+                    PreparedStatement preparedStatement = con.prepareStatement("INSERT INTO blanks (blankNumber, dateIssued, ticketType, ticketPrice, ticketPriceLocal, commissionRate) " + "VALUES (?,?,?,?,?,?)");
                     int highestIDBlank = getCurrentBlanks(ticketType);
                     preparedStatement.setInt(1, highestIDBlank + 1);
                     preparedStatement.setInt(2, dateIssued);
                     preparedStatement.setInt(3, ticketType);
                     preparedStatement.setInt(4, ticketPrice);
-                    preparedStatement.setInt(5, commissionRate);
+                    preparedStatement.setInt(5, actualLocalCurrencyInt);
+                    preparedStatement.setInt(6, commissionRate);
                     preparedStatement.executeUpdate();
-                    Blank blank = new Blank(highestIDBlank+1, dateIssued, 0, ticketType, null, null, 0, ticketPrice,0, 0, 0, 0, null, commissionRate);
+                    Blank blank = new Blank(highestIDBlank+1, dateIssued, 0, ticketType, null, null, 0, ticketPrice,0,actualLocalCurrencyInt, 0,0, 0, 0, null, commissionRate);
                     array.add(blank);
                     preparedStatement.close();
                 }
                 con.close();
-
                 JOptionPane.showMessageDialog(frame, blankAmount+" blanks have been added", "Success", JOptionPane.INFORMATION_MESSAGE);
             }
             else{

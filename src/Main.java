@@ -93,7 +93,7 @@ public class Main {
                 case 5 -> col.setText("|Origin|");
                 case 6 -> col.setText("|Seat Number|");
                 case 7 -> col.setText("|Ticket Price|");
-                case 8 -> col.setText("|Discounted Ticket Price");
+                case 8 -> col.setText("|Local Price");
                 case 9 -> col.setText("|Seller UserID|");
                 case 10 -> col.setText("|Customer UserID|");
                 case 11 -> col.setText("|Date Sold|");
@@ -117,6 +117,16 @@ public class Main {
             if (blank.getDateIssued()!=0) {
                 dateIssued = dateIssued.substring(0, 4)+"/"+dateIssued.substring(4, 6)+"/"+dateIssued.substring(6);
             }
+            int actualPrice = blank.getTicketPrice();
+            int discountedPrice = blank.getDiscountedTicketPrice();
+            if (actualPrice!=discountedPrice && discountedPrice !=0){
+                actualPrice = discountedPrice;
+            }
+            int localPrice = blank.getTicketPriceLocal();
+            int discountedPriceLocal = blank.getDiscountedTicketPriceLocal();
+            if (localPrice!=discountedPriceLocal && discountedPriceLocal !=0){
+                localPrice = discountedPriceLocal;
+            }
             switch (i){
                 case 0 -> col.setText(String.valueOf(blankNumber));
                 case 1 -> col.setText(dateIssued);
@@ -125,8 +135,8 @@ public class Main {
                 case 4 -> col.setText(String.valueOf(blank.getDestination()));
                 case 5 -> col.setText(String.valueOf(blank.getOrigin()));
                 case 6 -> col.setText(String.valueOf(blank.getSeatNumber()));
-                case 7 -> col.setText("$"+ blank.getTicketPrice());
-                case 8 -> col.setText("$"+ blank.getDiscountedTicketPrice());
+                case 7 -> col.setText("$"+ actualPrice);
+                case 8 -> col.setText(String.valueOf(localPrice));
                 case 9 -> col.setText(String.valueOf(blank.getSellerUserID()));
                 case 10 -> col.setText(String.valueOf(blank.getCustomerUserID()));
                 case 11 -> col.setText(String.valueOf(blank.getDateSold()));
@@ -161,7 +171,7 @@ public class Main {
                     "in2018g30_a", "AqZonm86");
             PreparedStatement preparedStatement = con.prepareStatement("" +
                     "SELECT blankNumber, dateIssued, dateValidated, ticketType, destination, " +
-                    "origin, seatNumber, ticketPrice, discountedTicketPrice, sellerUserID, customerUserID, dateSold, cashCard, commissionRate FROM blanks");
+                    "origin, seatNumber, ticketPrice, discountedTicketPrice, ticketPriceLocal, discountedTicketPriceLocal, sellerUserID, customerUserID, dateSold, cashCard, commissionRate FROM blanks");
             ResultSet resultSet = preparedStatement.executeQuery();
             this.blankArrayList = new ArrayList<Blank>();
             while (resultSet.next()){
@@ -174,13 +184,15 @@ public class Main {
                 int seatNumber = resultSet.getInt("seatNumber");
                 int ticketPrice = resultSet.getInt("ticketPrice");
                 int discountedTicketPrice = resultSet.getInt("discountedTicketPrice");
+                int ticketPriceLocal = resultSet.getInt("ticketPriceLocal");
+                int discountedTicketPriceLocal = resultSet.getInt("discountedTicketPriceLocal");
                 int sellerUserID = resultSet.getInt("sellerUserID");
                 int customerUserID = resultSet.getInt("customerUserID");
                 int dateSold = resultSet.getInt("dateSold");
                 String cashCard = resultSet.getString("cashCard");
                 int commissionRate = resultSet.getInt("commissionRate");
                 Blank newBlank = new Blank(blankNumber, dateIssued, dateValidated,ticketType,destination,
-                        origin,seatNumber,ticketPrice, discountedTicketPrice,sellerUserID,customerUserID,dateSold, cashCard, commissionRate);
+                        origin,seatNumber,ticketPrice, discountedTicketPrice, ticketPriceLocal, discountedTicketPriceLocal, sellerUserID,customerUserID,dateSold, cashCard, commissionRate);
                 blankArrayList.add(newBlank);
             }
             preparedStatement.close();

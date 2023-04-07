@@ -53,17 +53,21 @@ public class frameCustomerCancel {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2018g30",
                     "in2018g30_a", "AqZonm86");
-            PreparedStatement preparedStatement = con.prepareStatement("UPDATE blanks SET customerUserID = ?, dateSold=?, cashCard=?" +
+            PreparedStatement preparedStatement = con.prepareStatement("UPDATE blanks SET customerUserID = ?, dateSold=?, cashCard=?, discountedTicketPrice=?, discountedTicketPriceLocal=?" +
                     " WHERE blankNumber = ? AND ticketType =?");
             preparedStatement.setNull(1, Types.INTEGER);
             preparedStatement.setNull(2, Types.INTEGER);
             preparedStatement.setString(3, null);
-            preparedStatement.setInt(4,blank.getBlankNumber());
-            preparedStatement.setInt(5, blank.getTicketType());
+            preparedStatement.setNull(4, Types.INTEGER);
+            preparedStatement.setInt(5, Types.INTEGER);
+            preparedStatement.setInt(6,blank.getBlankNumber());
+            preparedStatement.setInt(7, blank.getTicketType());
             preparedStatement.executeUpdate();
             preparedStatement.close();
             blank.setCustomerUserID(0);
             blank.setDateSold(0);
+            blank.setDiscountedTicketPrice(0);
+            blank.setDiscountedTicketPriceLocal(0);
             blank.setCashCard("null");
             JOptionPane.showMessageDialog(frame, "Ticket Refunded", "Success", JOptionPane.INFORMATION_MESSAGE);
             con.close();
