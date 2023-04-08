@@ -1,7 +1,11 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/*
+this class allows the travel advisor to be able to choose what they want to do
+the buttons include:
+validating a blank, generating an individual report and logging out
+ */
 public class frameTravelAdvisor {
     private Main main;
     private JFrame frame;

@@ -26,6 +26,11 @@ public class frameCustomerTickets {
             }
         });
     }
+    /*
+    this method sets up the panel with rows of labels and corresponding buttons next to them
+    these buttons and labels are under the top labels
+    the buttons allow you to cancel the ticket selected
+     */
     private void setUpTickets(){
         ArrayList<Blank> blankArrayList = main.getBlankArrayList();
         ArrayList<Blank> hasTicketArray = new ArrayList<Blank>();

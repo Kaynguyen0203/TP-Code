@@ -3,6 +3,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/*
+this class is just for the user to pick between cash or card to pay with
+of course, the blank that the user has chosen will be passed through here into the corresponding frames
+*/
+
 public class frameCustomerPurchase {
     private Main main;
     private JFrame frame;

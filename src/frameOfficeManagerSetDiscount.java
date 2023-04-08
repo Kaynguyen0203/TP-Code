@@ -6,7 +6,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
-
+/*
+this class is for the office manager to be able to set a fixed or a flexible discount for the customer chosen
+there is a row that shows the user details and another that shows the current discount the customer has
+when the office manager presses confirm, an sql query is sent to update the discount for the customer
+ */
 public class frameOfficeManagerSetDiscount {
     private Main main;
     private JFrame frame;
@@ -55,6 +59,7 @@ public class frameOfficeManagerSetDiscount {
             }
         });
     }
+
     private void setUpDiscountLabel(){
         JLabel col = new JLabel();
         GridBagConstraints labelConstraints = new GridBagConstraints();

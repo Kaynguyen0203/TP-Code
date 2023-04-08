@@ -3,7 +3,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+/*
+this class allows the system admin to see the list of blanks currently in the system
+the method sets up the rows of labels according to the blanks in the system under the top labels
+ */
 public class frameSystemAdminSystemStock {
     private Main main;
     private JFrame frame;

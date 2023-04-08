@@ -1,10 +1,9 @@
 import javax.swing.*;
-import java.awt.event.ActionListener;
 
-public class Blank {
+public class Blank { //a massive blank class for... each blank
     private final int blankNumber;
     private int dateIssued;
-    private int dateValidated;
+    private boolean isValidated;
     private int ticketType;
     private String destination;
     private String origin;
@@ -19,12 +18,12 @@ public class Blank {
     private JButton button;
     private String cashCard;
     private int commissionRate;
-    public Blank(int blankNumber, int dateIssued, int dateValidated, int ticketType, String destination, String origin,
+    public Blank(int blankNumber, int dateIssued, boolean isValidated, int ticketType, String destination, String origin,
                  int seatNumber, int ticketPrice, int discountedTicketPrice, int ticketPriceLocal, int discountedTicketPriceLocal,
                  int sellerUserID, int customerUserID, int dateSold, String cashCard, int commissionRate) {
         this.blankNumber = blankNumber;
         this.dateIssued = dateIssued;
-        this.dateValidated = dateValidated;
+        this.isValidated = isValidated;
         this.ticketType = ticketType;
         this.destination = destination;
         this.origin = origin;
@@ -42,7 +41,7 @@ public class Blank {
     }
     public int getBlankNumber() {return blankNumber;}
     public int getDateIssued() {return dateIssued;}
-    public int getDateValidated() {return dateValidated;}
+    public boolean getIsValidated() {return isValidated;}
     public int getTicketType() {return ticketType;}
     public String getDestination() {return destination;}
     public String getOrigin() {return origin;}
@@ -58,7 +57,7 @@ public class Blank {
     public String getCashCard() {return cashCard;}
     public int getCommissionRate() {return commissionRate;}
     public void setDateIssued(int dateIssued) {this.dateIssued = dateIssued;}
-    public void setDateValidated(int dateValidated) {this.dateValidated = dateValidated;}
+    public void setIsValidated(boolean isValidated) {this.isValidated = isValidated;}
     public void setTicketType(int ticketType) {this.ticketType = ticketType;}
     public void setDestination(String destination) {this.destination = destination;}
     public void setOrigin(String origin) {this.origin = origin;}

@@ -4,9 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
+/*
+this class allows the office manager to see all the sales on a particular day as specified on the previous frame
+the method sets up all blanks in rows under the 2 top labels
+the labels are split up into interline and domestic sales
+ */
 public class frameOfficeManagerATSReportView {
     private Main main;
     private JFrame frame;
@@ -40,6 +42,7 @@ public class frameOfficeManagerATSReportView {
             }
         });
     }
+
     private void seeReport(){
         ArrayList<Blank> blankArrayList = main.getBlankArrayList();
         ArrayList<User> userArrayList = main.getUserArrayList();

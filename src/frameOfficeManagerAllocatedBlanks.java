@@ -6,7 +6,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
-
+/*
+this sequence of methods sets up the labels and corresponding buttons for blanks that have
+already been assigned to a travel advisor
+a button can be reallocated if the blank has not been validated yet
+ */
 public class frameOfficeManagerAllocatedBlanks {
     private final Main main;
     private final JFrame frame;
@@ -29,6 +33,7 @@ public class frameOfficeManagerAllocatedBlanks {
             }
         });
     }
+
     private void setUpButtons(){
         ArrayList<Blank> blankArrayList = main.getBlankArrayList();
         GridBagConstraints buttonConstraints = main.setBlankButtonConstraints();
@@ -45,7 +50,10 @@ public class frameOfficeManagerAllocatedBlanks {
                 blankButton.setText("Reallocate");
                 blankButton.setBackground(Color.GREEN);
                 blankButton.setForeground(Color.BLACK);
-                blankButton.setEnabled(true);
+                blankButton.setEnabled(false);
+                if (!blank.getIsValidated()){
+                    blankButton.setEnabled(true);
+                }
                 panelSecondary.add(blankButton, buttonConstraints);
                 if (blankButton.getActionListeners().length ==0){
                     blankButton.addActionListener(new ActionListener() {

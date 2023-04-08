@@ -37,6 +37,10 @@ public class frameLogin {
             }
         });
     }
+    /*
+    this method will allow the user to login
+    takes the field of name and password, compares them to the database and logs into a frame depending on the role
+     */
     private void login(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");

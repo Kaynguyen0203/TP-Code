@@ -1,7 +1,11 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/*
+this is the class for the frame that comes after logging into a role of office manager
+there are buttons here that go to accessing system stock, accessing individual reports, setting discounts,
+generating ATS reports and finally logout
+ */
 public class frameOfficeManager {
     private Main main;
     private JFrame frame;

@@ -4,7 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
-
+/*
+this class allows the travel advisor to be able to see the details of the individual report that the user has created
+it will display everything sold on a specific day that the user has specified before this frame
+the labels are split into interline and domestic sales
+ */
 public class frameTravelAdvisorReportDetails {
     private Main main;
     private JFrame frame;

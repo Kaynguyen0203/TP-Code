@@ -5,7 +5,10 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-
+/*
+this class allows the system admin to be able to edit contact details for the chosen user from the previous frame
+information is taken from the text fields and an sql query is sent to update the information
+ */
 public class frameSystemAdminEditContactDetails {
     private final Main main;
     private final JFrame frame;

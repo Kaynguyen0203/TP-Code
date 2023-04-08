@@ -48,6 +48,11 @@ public class frameCustomerCancel {
             }
         });
     }
+    /*
+    this function is to get a refund from a blank
+    this is done by making a sql query to update the information back to before it was purchased, essentially cancelling it
+    a log is also created in a separate file called allRefundLogs.txt
+    */
     private void confirmCancel(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

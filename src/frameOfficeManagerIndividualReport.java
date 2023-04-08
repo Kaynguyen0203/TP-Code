@@ -4,7 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
-
+/*
+this class is the frame to display all the interline and domestic sales on a particular day specified on the previous frame
+these would be for the travel advisor chosen by the user
+ */
 public class frameOfficeManagerIndividualReport {
     private Main main;
     private JFrame frame;

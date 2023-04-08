@@ -3,7 +3,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+/*
+this class allows the office manager to see the current customers in the system
+the set up customers list method sets up the rows of labels and the corresponding buttons under the top labels
+the buttons will change to another frame to set a discount for the selected customer/user
+ */
 public class frameOfficeManagerCurrentCustomers {
     private Main main;
     private JFrame frame;
@@ -27,6 +31,7 @@ public class frameOfficeManagerCurrentCustomers {
             }
         });
     }
+
     private void setUpCustomerList(){
         ArrayList<User> customerArrayList = new ArrayList<User>();
         ArrayList<User> userArrayList = main.getUserArrayList();

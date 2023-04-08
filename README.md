@@ -34,9 +34,3 @@ in order of completion: <br>
 - frameOfficeManagerATSReport (user can choose a date to generate an ATS report)
 - frameOfficeManagerATSReportView (user can see the details of the ATS report)
 - frameSystemAdminReceiveBlanks (user can get blanks from Air Via)
-
-Office Manager frames (10/10) <br>
-System Admin frames (5/8) <br>
-Travel Advisor frames (5/5) <br>
-Customer frames (6/6) <br>
-login, create account (2/2) <br>

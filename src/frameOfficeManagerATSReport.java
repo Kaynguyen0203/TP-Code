@@ -2,6 +2,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/*
+this class is for the office manager to input a date to make an ATS report for
+when the user presses the button, it will go to another screen with the details
+ */
 public class frameOfficeManagerATSReport {
     private Main main;
     private JFrame frame;

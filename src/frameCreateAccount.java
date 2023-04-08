@@ -34,6 +34,12 @@ public class frameCreateAccount {
         });
 
     }
+    /*
+    this sequence of functions is to create an account by getting the related data from the text fields
+    and then do a sql query to insert the data into the database
+    the function to get the highest will get the highest number ID +1 from the users in the database
+    and use it for the new account
+    */
     private void createAccount(){
         String name = fieldName.getText();
         String password = fieldPassword.getText();

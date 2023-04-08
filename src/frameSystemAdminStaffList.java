@@ -3,7 +3,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+/*
+this class allows the system admin to see the list of staff
+the method sets up the rows of labels and corresponding buttons
+the system admin can pick which one to change the contact details for
+ */
 public class frameSystemAdminStaffList {
     private final Main main;
     private final JFrame frame;

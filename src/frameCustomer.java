@@ -11,7 +11,6 @@ public class frameCustomer {
     private JPanel panelCustomer;
     private JButton buttonLogOut;
     private JPanel panelSecondary;
-
     public frameCustomer(Main main) {
         this.main = main;
         frame = main.getMain().getMainFrame();
@@ -19,7 +18,7 @@ public class frameCustomer {
         main.setUpBlankTopLabels(panelSecondary);
         setUpButtons();
         frame.pack();
-        buttonLogOut.addActionListener(new ActionListener() {
+        buttonLogOut.addActionListener(new ActionListener() { //to go back to the login page
             @Override
             public void actionPerformed(ActionEvent e) {
                 main.removeBlankActionListeners();
@@ -29,7 +28,7 @@ public class frameCustomer {
                 new frameLogin(main);
             }
         });
-        buttonCurrentTickets.addActionListener(new ActionListener() {
+        buttonCurrentTickets.addActionListener(new ActionListener() { //to go to the list of current blanks the customer has
             @Override
             public void actionPerformed(ActionEvent e) {
                 main.removeBlankActionListeners();
@@ -38,11 +37,15 @@ public class frameCustomer {
             }
         });
     }
+    /*
+    this function is to set up the buttons next to all the blanks
+    the buttons goes to the purchase page with the corresponding blank
+    */
     private void setUpButtons(){
         ArrayList<Blank> blankArrayList = main.getBlankArrayList();
         ArrayList<Blank> canBuyArrayList = new ArrayList<Blank>();
         for (Blank blank : blankArrayList){
-            if (blank.getDateValidated()!=0 && blank.getCustomerUserID()==0){
+            if (!blank.getIsValidated() && blank.getCustomerUserID()==0){
                 canBuyArrayList.add(blank);
             }
         }

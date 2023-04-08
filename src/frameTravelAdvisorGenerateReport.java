@@ -1,7 +1,10 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/*
+this class allows the travel advisor to be able to generate a report
+they can do this by inputting a specific day then clicking on the generate button which sends the user to the next frame
+ */
 public class frameTravelAdvisorGenerateReport {
     private Main main;
     private JFrame frame;

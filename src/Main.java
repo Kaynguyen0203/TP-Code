@@ -31,29 +31,29 @@ public class Main {
     public void setUser(User newUser) {this.user = newUser;}
     public ArrayList<Blank> getBlankArrayList() {return blankArrayList;}
     public ArrayList<User> getUserArrayList() {return userArrayList;}
-    public void removeBlankActionListeners(){
+    public void removeBlankActionListeners(){ // this function is to make sure there are no duplicate action listeners in blank buttons
         for (Blank blank: main.getBlankArrayList()){
             for (ActionListener listener: blank.getButton().getActionListeners()){
                 blank.getButton().removeActionListener(listener);
             }
         }
     }
-    public void removeUserActionListeners(){
+    public void removeUserActionListeners(){ // this function is to make sure there are no duplicate action listeners in user buttons
         for (User user: main.getUserArrayList()){
             for (ActionListener listener: user.getButton().getActionListeners()){
                 user.getButton().removeActionListener(listener);
             }
         }
     }
-    public GridBagConstraints setBlankButtonConstraints(){
+    public GridBagConstraints setBlankButtonConstraints(){ //this function is to set up button constraints every time I need buttons for blanks
         GridBagConstraints buttonConstraints = new GridBagConstraints();
         buttonConstraints.anchor = GridBagConstraints.NORTHEAST;
-        buttonConstraints.gridx = 13;
+        buttonConstraints.gridx = 15;
         buttonConstraints.weightx = 1.0;
         buttonConstraints.weighty = 1.0;
         return buttonConstraints;
     }
-    public GridBagConstraints setUserButtonConstraints(){
+    public GridBagConstraints setUserButtonConstraints(){ //this function is to set up button constraints every time I need buttons for users
         GridBagConstraints buttonConstraints = new GridBagConstraints();
         buttonConstraints.anchor = GridBagConstraints.NORTHEAST;
         buttonConstraints.gridx = 5;
@@ -62,7 +62,7 @@ public class Main {
         return buttonConstraints;
     }
     public void setUpUserDataLabels(GridBagConstraints labelConstraints, User user, JPanel panelTertiary) {
-        for (int i=0; i<5; i++) {
+        for (int i=0; i<5; i++) { //this function is to set up a line of related data for one user
             JLabel col = new JLabel();
             col.setBorder(BorderFactory.createEmptyBorder(0,5,0,5));
             labelConstraints.gridx = i;
@@ -76,6 +76,9 @@ public class Main {
             panelTertiary.add(col, labelConstraints);
         }
     }
+    /*
+    this function is to set the top labels for when I want to list blanks in a panel
+    */
     public void setUpBlankTopLabels(JPanel panelSecondary) {
         GridBagConstraints labelConstraints = new GridBagConstraints();
         labelConstraints.anchor = GridBagConstraints.NORTHWEST;
@@ -103,26 +106,29 @@ public class Main {
             panelSecondary.add(col, labelConstraints);
         }
     }
+    /*
+    this function is to set up a line of related data for one blank
+    */
     public void setUpBlankDataLabels(GridBagConstraints labelConstraints, Blank blank, JPanel panelSecondary) {
         for (int i=0; i<14; i++) {
             JLabel col = new JLabel();
             col.setBorder(BorderFactory.createEmptyBorder(0,5,0,5));
             labelConstraints.gridx = i;
             String dateIssued = String.valueOf(blank.getDateIssued());
-            String dateValidated = String.valueOf(blank.getDateValidated());
+            String dateValidated = String.valueOf(blank.getIsValidated());
             long blankNumber = (blank.getTicketType()* 100000000L)+blank.getBlankNumber();
-            if (blank.getDateValidated()!=0) {
+            if (blank.getIsValidated()) {
                 dateValidated = dateValidated.substring(0, 4) + "/" + dateValidated.substring(4, 6) + "/" + dateValidated.substring(6);
             }
             if (blank.getDateIssued()!=0) {
                 dateIssued = dateIssued.substring(0, 4)+"/"+dateIssued.substring(4, 6)+"/"+dateIssued.substring(6);
             }
-            int actualPrice = blank.getTicketPrice();
+            int actualPrice = blank.getTicketPrice(); //sets the price label to the discounted one if there is a discount
             int discountedPrice = blank.getDiscountedTicketPrice();
             if (actualPrice!=discountedPrice && discountedPrice !=0){
                 actualPrice = discountedPrice;
             }
-            int localPrice = blank.getTicketPriceLocal();
+            int localPrice = blank.getTicketPriceLocal(); //sets the price label to the discounted one if there is a discount
             int discountedPriceLocal = blank.getDiscountedTicketPriceLocal();
             if (localPrice!=discountedPriceLocal && discountedPriceLocal !=0){
                 localPrice = discountedPriceLocal;
@@ -146,6 +152,9 @@ public class Main {
             panelSecondary.add(col, labelConstraints);
         }
     }
+    /*
+    this function is to set the top labels for when I want to list users in a panel
+    */
     public void setUpUserTopLabels(JPanel panel) {
         GridBagConstraints labelConstraints = new GridBagConstraints();
         labelConstraints.anchor = GridBagConstraints.NORTHWEST;
@@ -164,20 +173,25 @@ public class Main {
             panel.add(col, labelConstraints);
         }
     }
+    /*
+    this function is to run at the beginning of the program
+    this gives all the blanks the required data from the database
+    this is so that I do not need to do a select query every time I need to get something from the database
+    */
     private void setUpBlanks(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2018g30",
                     "in2018g30_a", "AqZonm86");
             PreparedStatement preparedStatement = con.prepareStatement("" +
-                    "SELECT blankNumber, dateIssued, dateValidated, ticketType, destination, " +
+                    "SELECT blankNumber, dateIssued, isValidated, ticketType, destination, " +
                     "origin, seatNumber, ticketPrice, discountedTicketPrice, ticketPriceLocal, discountedTicketPriceLocal, sellerUserID, customerUserID, dateSold, cashCard, commissionRate FROM blanks");
             ResultSet resultSet = preparedStatement.executeQuery();
             this.blankArrayList = new ArrayList<Blank>();
             while (resultSet.next()){
                 int blankNumber = resultSet.getInt("blankNumber");
                 int dateIssued = resultSet.getInt("dateIssued");
-                int dateValidated = resultSet.getInt("dateValidated");
+                boolean isValidated = resultSet.getBoolean("isValidated");
                 int ticketType = resultSet.getInt("ticketType");
                 String destination = resultSet.getString("destination");
                 String origin = resultSet.getString("origin");
@@ -191,7 +205,7 @@ public class Main {
                 int dateSold = resultSet.getInt("dateSold");
                 String cashCard = resultSet.getString("cashCard");
                 int commissionRate = resultSet.getInt("commissionRate");
-                Blank newBlank = new Blank(blankNumber, dateIssued, dateValidated,ticketType,destination,
+                Blank newBlank = new Blank(blankNumber, dateIssued, isValidated,ticketType,destination,
                         origin,seatNumber,ticketPrice, discountedTicketPrice, ticketPriceLocal, discountedTicketPriceLocal, sellerUserID,customerUserID,dateSold, cashCard, commissionRate);
                 blankArrayList.add(newBlank);
             }
@@ -201,6 +215,11 @@ public class Main {
             e.printStackTrace();
         }
     }
+    /*
+    this function is to run at the beginning of the program
+    this gives all the users the required data from the database
+    this is so that I do not need to do a select query every time I need to get something from the database
+    */
     private void setUpUsers(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");

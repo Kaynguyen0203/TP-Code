@@ -3,7 +3,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+/*
+this class allows the office manager to be able to see a list of travel advisors
+the office manager can then press the buttons to be able to generate an individual report for the chosen travel advisor
+ */
 public class frameOfficeManagerTravelAdvisors {
     private Main main;
     private JFrame frame;

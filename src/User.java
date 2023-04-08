@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class User {
+public class User { //a user class for each user
     private final int userID;
     private String name;
     private String password;

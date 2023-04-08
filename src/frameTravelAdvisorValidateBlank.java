@@ -6,7 +6,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
+/*
+this class allows the travel advisor to be able to validate a blank
+the user can set all the required information
+an sql query is sent to update the selected blank from the previous frame
+ */
 public class frameTravelAdvisorValidateBlank {
     private Main main;
     private JFrame frame;
@@ -16,6 +20,8 @@ public class frameTravelAdvisorValidateBlank {
     private JTextField fieldDestination;
     private JTextField fieldOrigin;
     private JTextField fieldSeatNumber;
+    private JTextField fieldTicketPrice;
+    private JTextField fieldLocalCurrencyRate;
     private Blank blank;
     public frameTravelAdvisorValidateBlank(Main main, Blank blank) {
         this.main = main;
@@ -48,6 +54,10 @@ public class frameTravelAdvisorValidateBlank {
             String destination = fieldDestination.getText();
             String origin = fieldOrigin.getText();
             int seatNumber = Integer.parseInt(fieldSeatNumber.getText());
+            int ticketPrice = Integer.parseInt(fieldTicketPrice.getText());
+            long localCurrencyRate = Long.parseLong(fieldLocalCurrencyRate.getText());
+            long actualLocalCurrency = (long)ticketPrice*localCurrencyRate;
+            int actualLocalCurrencyInt = (int)actualLocalCurrency;
             if (destination.isEmpty() || origin.isEmpty() || seatNumber ==0) {
                 JOptionPane.showMessageDialog(frame, "One or more empty fields", "Try again", JOptionPane.ERROR_MESSAGE);
                 return;
@@ -55,25 +65,25 @@ public class frameTravelAdvisorValidateBlank {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2018g30",
                     "in2018g30_a", "AqZonm86");
-            PreparedStatement preparedStatement = con.prepareStatement("UPDATE blanks SET dateValidated=?, destination=?, origin=?, seatNumber=? "
+            PreparedStatement preparedStatement = con.prepareStatement("UPDATE blanks SET isValidated=?, destination=?, origin=?, seatNumber=?, ticketPrice=?, ticketPriceLocal=? "
                     + "WHERE blankNumber=? AND ticketType=?");
-            LocalDate currentDate = LocalDate.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
-            String formattedDate = currentDate.format(formatter);
-            int actualDate = Integer.parseInt(formattedDate);
-            preparedStatement.setInt(1, actualDate);
+            preparedStatement.setBoolean(1, true);
             preparedStatement.setString(2, destination);
             preparedStatement.setString(3, origin);
             preparedStatement.setInt(4, seatNumber);
-            preparedStatement.setInt(5, blank.getBlankNumber());
-            preparedStatement.setInt(6, blank.getTicketType());
+            preparedStatement.setInt(5, ticketPrice);
+            preparedStatement.setInt(6, actualLocalCurrencyInt);
+            preparedStatement.setInt(7, blank.getBlankNumber());
+            preparedStatement.setInt(8, blank.getTicketType());
             preparedStatement.executeUpdate();
             con.close();
             preparedStatement.close();
-            blank.setDateValidated(actualDate);
+            blank.setIsValidated(true);
             blank.setDestination(destination);
             blank.setSeatNumber(seatNumber);
             blank.setOrigin(origin);
+            blank.setTicketPrice(ticketPrice);
+            blank.setTicketPriceLocal(actualLocalCurrencyInt);
             JOptionPane.showMessageDialog(frame, "Blank Validated", "Success", JOptionPane.INFORMATION_MESSAGE);
             main.removeUserActionListeners();
             new frameTravelAdvisorEmptyBlanks(main);

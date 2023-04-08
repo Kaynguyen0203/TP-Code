@@ -3,7 +3,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+/*
+this class allows the travel advisor to see a list of blanks
+if the blank is not validated yet, they'll be able to press the validate button which send the user to the next frame
+the method sets up the rows of labels and corresponding buttons in a panel
+ */
 public class frameTravelAdvisorEmptyBlanks {
     private Main main;
     private JFrame frame;
@@ -44,7 +48,7 @@ public class frameTravelAdvisorEmptyBlanks {
             JButton blankButton = blank.getButton();
             main.setUpBlankDataLabels(labelConstraints, blank, panelSecondary);
             blankButton.setText("Validate");
-            if (blank.getDateValidated()==0){
+            if (!blank.getIsValidated()){
                 blankButton.setEnabled(true);
             } else{
                 blankButton.setEnabled(false);

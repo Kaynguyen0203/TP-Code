@@ -16,6 +16,7 @@ public class frameCustomerCard {
     private JTextField fieldCardNumber;
     private JPanel panelCustomerCard;
     private JPanel panelSecondary;
+    private JTextField fieldDate;
     private Blank blank;
     public frameCustomerCard(Main main, Blank blank) {
         this.main = main;
@@ -45,13 +46,19 @@ public class frameCustomerCard {
             }
         });
     }
+    /*
+    this function is to pay for the blank the user has chosen
+    an sql query is made to update the information with date sold, cash or card and the discounts if the user has one
+     */
     private void paymentConfirm(){
         try {
+            int date = Integer.parseInt(fieldDate.getText());
+            int cardNumberTemp = Integer.parseInt(fieldCardNumber.getText());
+            String cardNumber = String.valueOf(cardNumberTemp);
             User user = main.getUser();
             double discountPercentage = user.getDiscount() / 100.0;
             double actualTicketPrice = blank.getTicketPrice() * (1 - discountPercentage);
             int discountedPrice = (int) actualTicketPrice;
-            String cardNumber = fieldCardNumber.getText();
             double actualTicketPriceLocal = blank.getTicketPriceLocal() * (1 - discountPercentage);
             int discountedPriceLocal = (int) actualTicketPriceLocal;
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -59,12 +66,8 @@ public class frameCustomerCard {
                     "in2018g30_a", "AqZonm86");
             PreparedStatement preparedStatement = con.prepareStatement("UPDATE blanks SET customerUserID = ?, dateSold=?, cashCard=?, discountedTicketPrice=?, discountedTicketPriceLocal=?" +
                     " WHERE blankNumber = ? AND ticketType =?");
-            LocalDate currentDate = LocalDate.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
-            String formattedDate = currentDate.format(formatter);
-            int actualDate = Integer.parseInt(formattedDate);
             preparedStatement.setInt(1, user.getUserID());
-            preparedStatement.setInt(2, actualDate);
+            preparedStatement.setInt(2, date);
             preparedStatement.setString(3, cardNumber);
             preparedStatement.setInt(4, discountedPrice);
             preparedStatement.setInt(5, discountedPriceLocal);
@@ -73,7 +76,7 @@ public class frameCustomerCard {
             preparedStatement.executeUpdate();
             preparedStatement.close();
             blank.setCustomerUserID(user.getUserID());
-            blank.setDateSold(actualDate);
+            blank.setDateSold(date);
             blank.setCashCard(cardNumber);
             blank.setDiscountedTicketPrice(discountedPrice);
             blank.setDiscountedTicketPriceLocal(discountedPriceLocal);
@@ -81,6 +84,7 @@ public class frameCustomerCard {
             con.close();
         } catch(Exception e){
             e.printStackTrace();
+            JOptionPane.showMessageDialog(frame, "fields not set properly", "Invalid", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

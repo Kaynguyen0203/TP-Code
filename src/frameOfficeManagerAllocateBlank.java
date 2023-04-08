@@ -6,7 +6,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
-
+/*
+this class allows the office manager to be able to see rows of travel advisors
+the sequence of methods sets up the panel with rows of labels and corresponding buttons
+each label is the user information, each button allows the user to allocate the blank
+these buttons and labels are under the top labels
+ */
 public class frameOfficeManagerAllocateBlank {
     private final Main main;
     private final JFrame frame;
@@ -37,6 +42,7 @@ public class frameOfficeManagerAllocateBlank {
             }
         });
     }
+
     private void setUpTravelAdvisorsList(){
         ArrayList<User> travelAdvisorArrayList = new ArrayList<User>();
         ArrayList<User> userArrayList = main.getUserArrayList();

@@ -3,7 +3,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+/*
+this class is a frame for the office manager to see all the current blanks in the system
+the set up buttons method is to add the rows of labels under the top labels
+ */
 public class frameOfficeManagerSystemStock {
     private final Main main;
     private final JFrame frame;
