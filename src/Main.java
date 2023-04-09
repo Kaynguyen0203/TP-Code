@@ -90,7 +90,7 @@ public class Main {
             switch (i) {
                 case 0 -> col.setText("|Blank Number|");
                 case 1 -> col.setText("|Date Issued|");
-                case 2 -> col.setText("|Date Validated|");
+                case 2 -> col.setText("|Is Validated|");
                 case 3 -> col.setText("|Ticket Type|");
                 case 4 -> col.setText("|Destination|");
                 case 5 -> col.setText("|Origin|");
@@ -117,9 +117,6 @@ public class Main {
             String dateIssued = String.valueOf(blank.getDateIssued());
             String dateValidated = String.valueOf(blank.getIsValidated());
             long blankNumber = (blank.getTicketType()* 100000000L)+blank.getBlankNumber();
-            if (blank.getIsValidated()) {
-                dateValidated = dateValidated.substring(0, 4) + "/" + dateValidated.substring(4, 6) + "/" + dateValidated.substring(6);
-            }
             if (blank.getDateIssued()!=0) {
                 dateIssued = dateIssued.substring(0, 4)+"/"+dateIssued.substring(4, 6)+"/"+dateIssued.substring(6);
             }

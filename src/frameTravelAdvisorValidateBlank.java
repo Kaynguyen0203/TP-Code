@@ -55,8 +55,8 @@ public class frameTravelAdvisorValidateBlank {
             String origin = fieldOrigin.getText();
             int seatNumber = Integer.parseInt(fieldSeatNumber.getText());
             int ticketPrice = Integer.parseInt(fieldTicketPrice.getText());
-            long localCurrencyRate = Long.parseLong(fieldLocalCurrencyRate.getText());
-            long actualLocalCurrency = (long)ticketPrice*localCurrencyRate;
+            double localCurrencyRate = Double.parseDouble(fieldLocalCurrencyRate.getText());
+            double actualLocalCurrency = (double)ticketPrice*localCurrencyRate;
             int actualLocalCurrencyInt = (int)actualLocalCurrency;
             if (destination.isEmpty() || origin.isEmpty() || seatNumber ==0) {
                 JOptionPane.showMessageDialog(frame, "One or more empty fields", "Try again", JOptionPane.ERROR_MESSAGE);

@@ -53,7 +53,7 @@ public class frameCustomerCard {
     private void paymentConfirm(){
         try {
             int date = Integer.parseInt(fieldDate.getText());
-            int cardNumberTemp = Integer.parseInt(fieldCardNumber.getText());
+            long cardNumberTemp = Long.parseLong(fieldCardNumber.getText());
             String cardNumber = String.valueOf(cardNumberTemp);
             User user = main.getUser();
             double discountPercentage = user.getDiscount() / 100.0;

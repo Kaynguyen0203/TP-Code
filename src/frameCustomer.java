@@ -45,7 +45,7 @@ public class frameCustomer {
         ArrayList<Blank> blankArrayList = main.getBlankArrayList();
         ArrayList<Blank> canBuyArrayList = new ArrayList<Blank>();
         for (Blank blank : blankArrayList){
-            if (!blank.getIsValidated() && blank.getCustomerUserID()==0){
+            if (blank.getIsValidated() && blank.getCustomerUserID()==0){
                 canBuyArrayList.add(blank);
             }
         }
