@@ -11,11 +11,9 @@ public class frameSystemAdmin {
     private JFrame frame;
     private JPanel panelSystemAdmin;
     private JButton buttonLogOut;
-    private JButton buttonBackUpAndRestore;
     private JButton buttonAccessSystemStock;
     private JButton buttonTravelAgentContactDetails;
     private JButton receiveBlanksFromAirViaButton;
-
 
     public frameSystemAdmin(Main main) {
         this.main = main;
