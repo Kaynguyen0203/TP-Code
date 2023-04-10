@@ -51,7 +51,7 @@ public class frameSystemAdminEditContactDetails {
     }
     private void updateContactInfo(){
         String name = fieldName.getText();
-        String email = fieldName.getText();
+        String email = fieldEmail.getText();
         String address = fieldAddress.getText();
         String role = (String) fieldRole.getSelectedItem();
         if (name.isEmpty() || email.isEmpty() || address.isEmpty() || role.isEmpty()){
