@@ -24,7 +24,7 @@ public class frameSystemAdminSystemStock {
         frame.pack();
         buttonGoBack.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 new frameSystemAdmin(main);
             }
         });
