@@ -87,6 +87,7 @@ public class frameOfficeManagerAllocateBlank {
             preparedStatement.setInt(1, user.getUserID());
             preparedStatement.setInt(2, blank.getBlankNumber());
             preparedStatement.setInt(3, blank.getTicketType());
+
             preparedStatement.executeUpdate();
             con.close();
             preparedStatement.close();
